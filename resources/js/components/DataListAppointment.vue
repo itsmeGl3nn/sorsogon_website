@@ -6,7 +6,7 @@
             <div class="d-flex justify-space-between align-center">
               <h2 class="text-h4">List of Appointments</h2>
               <div>
-                <v-btn color="primary" @click="createData" append-icon="mdi-plus">Create Data</v-btn>
+                <v-btn color="primary" @click="AppointmentModal" append-icon="mdi-plus">Create Data</v-btn>
               </div>
             </div>
           </v-col>

@@ -113,16 +113,15 @@
                     <span v-else>{{ item.description }}</span>
                   </div>
                   <a
-                    :href="`/${item.link}`"
+                    :href="`${item.link}`"
                     :aria-label="`Go to ${item.title} page`"
                   >
-                   <v-btn
-                      color="primary"
-                      class="text-body-2"
-                      height="40"
-                      minWidth="100"
-                      >Learn More</v-btn
-                    >
+                  <v-btn
+                    color="primary"
+                    class="text-body-2 text-xl-body-14"
+                    height="40"
+                    > {{ item.button}}</v-btn
+                  >
                   </a>
                 </v-card-item>
               </v-img>

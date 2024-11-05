@@ -5,14 +5,14 @@
                 <v-col cols="12">
                     <div class="d-flex justify-space-between align-center">
                         <h2 class="text-h4">List of Complaints</h2>
-                        <div>
+                        <!-- <div>
                             <v-btn
                                 color="primary"
                                 @click="createData"
                                 append-icon="mdi-plus"
                                 >Create Data</v-btn
                             >
-                        </div>
+                        </div> -->
                     </div>
                 </v-col>
             </v-row>

@@ -31,7 +31,7 @@
                         </div>
                         <v-form ref="form" v-model="formValid">
                             <v-row>
-                                <v-col cols="12">
+                                <v-col cols="12" md="12">
                                     <v-text-field
                                         v-model="first_name"
                                         label="First Name"
@@ -201,7 +201,9 @@
         <v-dialog v-model="successDialog" persistent max-width="400">
             <v-card>
                 <v-card-title class="headline">Success</v-card-title>
-                <v-card-text>Your appointment has been successfully booked.</v-card-text>
+                <v-card-text
+                    >Your appointment has been successfully booked.</v-card-text
+                >
                 <v-card-actions>
                     <v-btn color="primary" @click="closeDialog">OK</v-btn>
                 </v-card-actions>
@@ -230,6 +232,10 @@ export default {
             date: null,
             formattedDate: "",
             timeOptions: [
+                "6:00AM-7:00AM",
+                "7:00AM-8:00AM",
+                "8:00AM-9:00AM",
+                "9:00AM-10:00AM",
                 "10:00AM-11:00AM",
                 "11:00AM-12:00PM",
                 "12:00PM-1:00PM",
@@ -237,8 +243,6 @@ export default {
                 "2:00PM-3:00PM",
                 "3:00PM-4:00PM",
                 "4:00PM-5:00PM",
-                "5:00PM-6:00PM",
-                "6:00PM-7:00PM",
             ],
             successDialog: false,
         };
@@ -253,36 +257,73 @@ export default {
     },
     methods: {
         formatDate(val) {
-            if (val) {
-                // Extract the 'YYYY-MM-DD' part
-                const formatted = new Date(val).toISOString().slice(0, 10);
-                this.formattedDate = formatted;
-            }
+            const selectedDate = new Date(val);
+            const year = selectedDate.getFullYear();
+            const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+            const day = String(selectedDate.getDate()).padStart(2, "0");
+
+            // Format the date as YYYY-MM-DD
+            const formatted = `${year}-${month}-${day}`;
+            this.date = val;
+
+            this.formattedDate = formatted;
         },
         closeDialog() {
             this.successDialog = false;
-            this.resetForm();
+            this.$router.push("/");
         },
 
-        resetForm() {
-            // Clear form data
-            this.first_name = "";
-            this.last_name = "";
-            this.address = "";
-            this.mobile_num = "";
-            this.email = "";
-            this.reasons = "";
-            this.time = "";
-            this.date = null;
-            this.formattedDate = "";
+        // resetForm() {
+        //     this.first_name = "";
+        //     this.last_name = "";
+        //     this.address = "";
+        //     this.mobile_num = "";
+        //     this.email = "";
+        //     this.reasons = "";
+        //     this.time = "";
+        //     this.date = null;
+        //     this.formattedDate = "";
+        // },
+        // clearDate() {
+        //     this.preferredDate = null;
+        //     this.formattedDate = "";
+        // },
+        async getDate() {
+            const res = await axios.get("/api/booked-appointment");
+            this.tableData = res.data.data; // Assuming `tableData` contains existing appointments
         },
-        clearDate() {
-            this.preferredDate = null;
-            this.formattedDate = "";
+
+        async checkAvailability(date, time) {
+            // Fetch the latest booked appointments data
+            await this.getDate();
+
+            // Check if the selected date and time combination is already booked
+            const isBooked = this.tableData.some(
+                (appointment) =>
+                    appointment.date === date && appointment.time === time
+            );
+
+            return !isBooked; // Return true if the time slot is available, false if it’s taken
         },
+
         async submit() {
             this.loading = true;
+
             if (this.$refs.form.validate()) {
+                // Check if the time slot is available
+                const isAvailable = await this.checkAvailability(
+                    this.formattedDate,
+                    this.time
+                );
+
+                if (!isAvailable) {
+                    this.loading = false;
+                    alert(
+                        "The selected time slot is already booked. Please choose a different time."
+                    );
+                    return;
+                }
+
                 const formData = {
                     first_name: this.first_name,
                     last_name: this.last_name,
@@ -290,16 +331,21 @@ export default {
                     mobile_num: this.mobile_num,
                     email: this.email,
                     time: this.time,
-                    date: this.date,
+                    date: this.formattedDate,
                     reasons: this.reasons,
                 };
-                const response = await axios.post(
-                    "/api/book-appointment",
-                    formData
-                );
-                this.loading = false;
-                this.successDialog = true;
 
+                try {
+                    const response = await axios.post(
+                        "/api/book-appointment",
+                        formData
+                    );
+                    this.loading = false;
+                    this.successDialog = true;
+                } catch (error) {
+                    console.error("Error booking appointment:", error);
+                    this.loading = false;
+                }
             } else {
                 this.loading = false;
             }

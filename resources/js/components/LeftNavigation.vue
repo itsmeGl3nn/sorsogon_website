@@ -101,7 +101,7 @@
             ></v-list-item>
 
             <!-- Expand Button -->
-            <v-list-item
+            <!-- <v-list-item
                 id="left-nav-resize"
                 data-aos="fade-right"
                 data-aos-duration="600"
@@ -111,7 +111,7 @@
                 title="Expand"
                 value="expand"
                 @click="rail = !rail"
-            ></v-list-item>
+            ></v-list-item> -->
         </v-list>
     </v-navigation-drawer>
 </template>
@@ -127,11 +127,11 @@ export default {
         const profile = computed(() => profileStore);
         const show = ref(false);
         const cmsData = ref([
-            { title: "Home", type: "text", path: "/users" },
-            { title: "About", type: "text", path: "/data-complaint" },
-            { title: "News", type: "text", path: "/users" },
-            { title: "Tourism Services", type: "text", path: "/users" },
-            { title: "Help Center", type: "text", path: "/users" },
+            { title: "CMS - Home Banner ", type: "text", path: "/cms-homebanner" },
+            { title: "CMS - Employees", type: "text", path: "/data-employees" },
+            { title: "CMS - News and Advisories", type: "text", path: "/news" },
+            { title: "CMS - About Us", type: "text", path: "/news" },
+
         ]);
 
         const userRole = computed(() => profileStore.role);

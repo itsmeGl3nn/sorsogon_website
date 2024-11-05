@@ -20,7 +20,8 @@
                                 placeholder="Type your Password" flat variant="outlined" rounded="lg" id="firstName"
                                 class="mt-3" :rules="[
                                     (v) => !!v || 'This field cannot be empty.',
-                                ]" hide-details="auto"></v-text-field>
+                                ]" hide-details="auto"
+                                @keyup.enter="login"></v-text-field> <!-- Added @keyup.enter here -->
                             <div class="d-flex justify-center pt-6">
                                 <v-btn width="200" height="50" size="x-large"
                                     class="text-body-2 font-weight-bold bg-blue" variant="outlined" color="white"

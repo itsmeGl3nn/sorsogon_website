@@ -31,7 +31,7 @@
                         </div>
                         <v-form ref="form" v-model="formValid">
                             <v-row>
-                                <v-col cols="12">
+                                <v-col cols="12" md="12">
                                     <v-text-field
                                         v-model="first_name"
                                         label="First Name"
