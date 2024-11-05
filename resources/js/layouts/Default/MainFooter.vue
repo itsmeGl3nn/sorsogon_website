@@ -19,7 +19,7 @@
                     height="auto"
                     aspect-ratio="16/9"
                     contain
-                    alt="Country Funders Logo"
+
                   ></v-img>
                 </a>
               </v-list-item>

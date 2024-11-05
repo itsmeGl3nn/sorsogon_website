@@ -10,7 +10,7 @@
                 height="auto"
                 aspect-ratio="16/9"
                 contain
-                alt="Country Funders Logo"
+
               ></v-img>
             </a>
           </v-col>
@@ -26,11 +26,7 @@
             class="d-none d-lg-flex justify-end align-center"
           >
             <v-list class="d-flex justify-end align-center bg-blue">
-              <v-list-item>
-                <a href="/inquire-now" aria-label="Go to inquire page">
-                  <v-btn-secondary>Inquire Now</v-btn-secondary>
-                </a>
-              </v-list-item>
+
               <v-list-item v-for="(item, index) in navItems" :key="index">
                 <a
                   v-if="item.link"
@@ -39,28 +35,6 @@
                   :aria-label="`Go to ${item.label} ${item.link ? 'page' : ''}`"
                 >
                   {{ item.label }}
-                </a>
-              </v-list-item>
-              <v-list-item>
-                <a href="/" aria-label="Go to contact us page">
-                  <v-img
-                    :src="facebook"
-                    width="40"
-                    height="40"
-                    contain
-                    alt="BYD Logo"
-                  ></v-img>
-                </a>
-              </v-list-item>
-              <v-list-item class="px-0">
-                <a href="/" aria-label="Go to contact us page">
-                  <v-img
-                    :src="linkedin"
-                    width="40"
-                    height="40"
-                    contain
-                    alt="BYD Logo"
-                  ></v-img>
                 </a>
               </v-list-item>
             </v-list>
@@ -77,8 +51,9 @@
               <v-toolbar color="blue">
                 <a href="/" aria-label="Go to Homepage">
                   <v-img
+                     :src="logo"
+                :width="smAndUp ? 300 : 250"
 
-                    :width="250"
                     height="auto"
                     aspect-ratio="16/9"
                     contain
@@ -99,34 +74,6 @@
                   >
                     {{ item.label }}
                   </a>
-                </v-list-item>
-                <v-list-item>
-                  <a href="/" aria-label="Go to iqnuire page">
-                    <v-btn-secondary>Inqurie Now</v-btn-secondary>
-                  </a>
-                </v-list-item>
-                <v-list-item>
-                  <div class="d-flex flex-wrap">
-                    <a href="/" aria-label="Go to contact us page">
-                      <v-img
-
-                        width="35"
-                        height="35"
-                        contain
-                        class="me-2"
-                        alt="Facebook icon"
-                      ></v-img>
-                    </a>
-                    <a href="/" aria-label="Go to contact us page">
-                      <v-img
-
-                        width="35"
-                        height="35"
-                        contain
-                        alt="Linkedin icon"
-                      ></v-img>
-                    </a>
-                  </div>
                 </v-list-item>
               </v-list>
             </v-card-item>
@@ -164,12 +111,12 @@ import logo from "/resources/assets/Logo.png"
             link: "/services",
           },
           {
-            label: "Contact Us",
-            link: "/contact-us",
+            label: "Our Office",
+            link: "/office",
           },
           {
-            label: "Login",
-            link: "/login",
+            label: "Contact Us",
+            link: "/contact-us",
           },
         ],
       };
