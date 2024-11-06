@@ -72,7 +72,6 @@ app.use(router);
 
 // Use Vuetify with the custom configuration
 app.use(vuetify);
-
 app.use(pinia);
 // Mount the app
 app.mount('#app');

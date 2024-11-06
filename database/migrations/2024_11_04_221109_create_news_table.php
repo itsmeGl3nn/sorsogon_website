@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('image');
             $table->string('category');
+            $table->string('external')->nullable();
             $table->timestamps();
         });
     }

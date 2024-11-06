@@ -33,24 +33,21 @@
                 </v-btn>
             </v-card-actions>
             <div class="pt-8 pb-8 map-container">
-                <iframe
-                    title="Pilar Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15536.243576513513!2d123.59780391473468!3d12.920196890880219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33ab5d7fca0e3f8f%3A0x108bc1b423fc96f2!2sPilar%2C%20Sorsogon!5e0!3m2!1sen!2sph!4v1696355070123!5m2!1sen!2sph"
-                    class="map-class pl-md-1"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
+                <v-img :src="map">
+
+                </v-img>
             </div>
         </v-card>
     </v-dialog>
 </template>
 
 <script>
+import map from "../../../assets/MapPilar.png";
 export default {
     data() {
         return {
-            showMap: false, // Controls dialog visibility
+            showMap: false,
+            map // Controls dialog visibility
         };
     },
 };

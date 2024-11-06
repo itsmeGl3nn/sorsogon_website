@@ -10,14 +10,17 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $table = 'news_table';
-
+    protected $table = 'news';
 
     protected $fillable = [
+        'title',
+        'description',
+        'content',
+        'author',
         'image',
-
+        'category',
+        'external',
     ];
-
 
     // Accessor to get the full image URL
     public function getImageUrlAttribute()

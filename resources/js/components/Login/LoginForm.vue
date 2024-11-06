@@ -37,7 +37,7 @@
 
 <script>
 import { useDisplay } from "vuetify";
-import logo from "/resources/assets/Logo2.png";
+import logo from "../../../assets/NewLogo.png";
 import backgroundImage from "/resources/assets/bgMain.png";
 import axios from "axios";
 import { Profile } from "/resources/js/stores/profilestate.js";

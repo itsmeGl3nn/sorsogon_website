@@ -27,7 +27,7 @@
         </div>
       </v-col>
     </v-row>
-        <v-row>
+    <v-row>
             <v-col
                 cols="12"
                 md="4"
@@ -36,10 +36,7 @@
                 data-aos="fade-up"
                 data-aos-duration="1200"
             >
-                <div
-                    class="d-flex flex-column justify-space-between"
-                    style="height: 100%"
-                >
+                <div class="d-flex flex-column justify-space-between" style="height: 100%">
                     <div>
                         <div class="img-wrapper mb-4">
                             <v-img
@@ -47,38 +44,34 @@
                                 cover
                                 rounded="lg"
                                 width="100%"
-                                :src="blog.thumbnail"
+                                :src="blog.image"
                             ></v-img>
                         </div>
                         <div class="d-flex flex-wrap align-center mt-2 mb-2">
                             <div
-                                v-for="(tag, x) in blog.tags"
-                                :key="x"
+
                                 class="bg-primary rounded-xl px-4 py-1 mr-1 mb-1 text-uppercase text-caption"
                             >
-                                {{ tag.value }}
+                                {{ blog.category }}
                             </div>
                             <div class="font-weight-bold ml-1 text-primary">
                                 by {{ blog.author }}
                             </div>
                         </div>
-                        <div
-                            class="text-subtitle-2 font-weight-bold mb-2 text-primary"
-                            style="font-family: 'Poppins', sans-serif"
-                        >
+                        <div class="text-subtitle-2 font-weight-bold mb-2 text-primary" style="font-family: 'Poppins', sans-serif">
                             {{ blog.title }}.
                         </div>
                         <div class="text-body-1">
                             {{
-                                blog.excerpt.length > 100
-                                    ? blog.excerpt.slice(0, 150) + "..."
-                                    : blog.excerpt
+                                blog.description.length > 100
+                                    ? blog.description.slice(0, 150) + "..."
+                                    : blog.description
                             }}
                         </div>
                     </div>
                     <div class="mb-8">
-                        <template v-if="blog.externalLink">
-                            <a :href="blog.externalLink">
+                        <template v-if="blog.external">
+                            <a :href="blog.external" target="_blank">
                                 <v-btn
                                     style="opacity: 0.87"
                                     variant="plain"
@@ -95,13 +88,14 @@
                             variant="plain"
                             append-icon="mdi-chevron-right"
                             class="font-weight-bold pa-0 mt-6"
-                            href="/news/NewsDetails"
+                        :href="`/news/${blog.title}`"
                             >READ MORE</v-btn
                         >
                     </div>
                 </div>
             </v-col>
         </v-row>
+
         <v-pagination
             class="mt-10"
             v-model="currentPage"
@@ -135,6 +129,7 @@
     </v-container>
 </template>
 <script>
+import axios from 'axios';
 export default {
     components: {},
     setup() {
@@ -147,88 +142,38 @@ export default {
                 totalPages: 5,
             },
             blogs: [
-                {
-                    thumbnail: "https://via.placeholder.com/300x200",
-                    tags: [{ value: "Technology" }, { value: "Development" }],
-                    author: "John Doe",
-                    title: "The Future of Web Development",
-                    excerpt:
-                        "Web development is evolving rapidly with new technologies and trends. In this article, we explore the latest... ",
-                    externalLink:
-                        "https://example.com/blog/future-of-web-development",
-                },
-                {
-                    thumbnail: "https://via.placeholder.com/300x200",
-                    tags: [{ value: "Health" }, { value: "Wellness" }],
-                    author: "Jane Smith",
-                    title: "10 Tips for a Healthy Lifestyle",
-                    excerpt:
-                        "Maintaining a healthy lifestyle is essential for overall well-being. Here are ten simple yet effective tips to help... ",
-                    externalLink: "",
-                },
-                {
-                    thumbnail: "https://via.placeholder.com/300x200",
-                    tags: [{ value: "Business" }, { value: "Finance" }],
-                    author: "Mark Johnson",
-                    title: "Managing Finances in 2024",
-                    excerpt:
-                        "In 2024, managing personal finances is more crucial than ever. With inflation and economic changes, it’s important to... ",
-                    externalLink: "",
-                },
-                {
-                    thumbnail: "https://via.placeholder.com/300x200",
-                    tags: [{ value: "Travel" }],
-                    author: "Lucy Lee",
-                    title: "Top 5 Destinations to Visit in 2024",
-                    excerpt:
-                        "Travel enthusiasts, 2024 is your year! Here are the top 5 must-visit destinations for an unforgettable experience...",
-                    externalLink:
-                        "https://example.com/blog/top-destinations-2024",
-                },
-                {
-                    thumbnail: "https://via.placeholder.com/300x200",
-                    tags: [
-                        { value: "Education" },
-                        { value: "Online Learning" },
-                    ],
-                    author: "Emily Davis",
-                    title: "The Rise of Online Learning",
-                    excerpt:
-                        "Online learning is becoming increasingly popular as technology advances. Discover the benefits and challenges of this...",
-                    externalLink: "",
-                },
-                {
-                    thumbnail: "https://via.placeholder.com/300x200",
-                    tags: [{ value: "Food" }, { value: "Recipes" }],
-                    author: "Michael Brown",
-                    title: "5 Easy Recipes for Busy Weeknights",
-                    excerpt:
-                        "Cooking doesn’t have to be time-consuming. Check out these 5 quick and easy recipes perfect for busy weeknights...",
-                    externalLink:
-                        "https://example.com/blog/easy-recipes-weeknights",
-                },
             ],
         };
     },
     watch: {
         currentPage() {
-        //    this.getBlogs();
+            this.getBlogs(this.currentPage); // Refetch blogs when page changes
         },
     },
     created() {
-        //this.getBlogs(1);
+        this.getBlogs(this.currentPage); // Fetch initial blogs
     },
     methods: {
+        async getBlogs(page) {
+    try {
+        const response = await axios.get('/api/news', {
+            params: {
+                page: page,
+                limit: 10,
+            },
+        });
+
+        console.log(response.data); // Log the data to verify
+
+        this.blogs = response.data.data; // Set blogs data
+        this.meta.totalPages = response.data.meta.totalPages; // Set total pages
+    } catch (error) {
+        console.error('Error fetching news:', error);
+    }
+},
+
         changePage(page) {
             this.currentPage = page;
-        },
-        friendlyUrl(value) {
-            return value == undefined
-                ? ""
-                : value
-                      .replace(/[^a-z0-9_]+/gi, "-")
-                      .replace(/^-|-$/g, "")
-                      .toLowerCase();
         },
         nextPage() {
             if (this.currentPage < this.meta.totalPages) {

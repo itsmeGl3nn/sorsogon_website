@@ -28,7 +28,7 @@ const router = createRouter({
             components: {
                 'left-nav': () => import('../components/LeftNavigation.vue'),
                 'top-nav': () => import('../components/TopNavigation.vue'),
-                default: () => import('../pages/DataView.vue')
+                default: () => import('@/pages/DataView.vue')
             },
             meta: { title: "Data Complaint View - Pilar Sorsogon Website", requiresAuth: true }
         },        {
@@ -37,7 +37,7 @@ const router = createRouter({
             components: {
                 'left-nav': () => import('../components/LeftNavigation.vue'),
                 'top-nav': () => import('../components/TopNavigation.vue'),
-                default: () => import('../pages/DataHomeBannerView.vue')
+                default: () => import('@/pages/DataHomeBannerView.vue')
             },
             meta: { title: "Data Complaint View - Pilar Sorsogon Website", requiresAuth: true }
         },
@@ -47,9 +47,38 @@ const router = createRouter({
             components: {
                 'left-nav': () => import('../components/LeftNavigation.vue'),
                 'top-nav': () => import('../components/TopNavigation.vue'),
-                default: () => import('../pages/DataViewAppointment.vue')
+                default: () => import('@/pages/DataViewAppointment.vue')
             },
             meta: { title: "Data Appointment View - Pilar Sorsogon Website", requiresAuth: true }
+        },
+        {
+            path: '/data-news',
+            name: 'data-news',
+            components: {
+                'left-nav': () => import('../components/LeftNavigation.vue'),
+                'top-nav': () => import('../components/TopNavigation.vue'),
+                default: () => import('@/pages/DataViewNews.vue')
+            },
+            meta: { title: "Data News View - Pilar Sorsogon Website", requiresAuth: true }
+        },{
+            path: '/data-agencies',
+            name: 'data-agencies',
+            components: {
+                'left-nav': () => import('../components/LeftNavigation.vue'),
+                'top-nav': () => import('../components/TopNavigation.vue'),
+                default: () => import('@/pages/DataViewLineAgencies.vue')
+            },
+            meta: { title: "Data Agencies View - Pilar Sorsogon Website", requiresAuth: true }
+        },
+        {
+            path: '/data-municipalofficers',
+            name: 'data-municipalofficers',
+            components: {
+                'left-nav': () => import('../components/LeftNavigation.vue'),
+                'top-nav': () => import('../components/TopNavigation.vue'),
+                default: () => import('@/pages/DataViewMunicipalOfficer.vue')
+            },
+            meta: { title: "Data Municipal Officers View - Pilar Sorsogon Website", requiresAuth: true }
         },
         {
             path: '/users',
@@ -57,7 +86,7 @@ const router = createRouter({
             components: {
                 'left-nav': () => import('../components/LeftNavigation.vue'),
                 'top-nav': () => import('../components/TopNavigation.vue'),
-                default: () => import('../pages/DataUsersView.vue')
+                default: () => import('@/pages/DataUsersView.vue')
             },
             meta: { title: "Users View - Pilar Sorsogon Website", requiresAuth: true }
         },
@@ -93,7 +122,7 @@ const router = createRouter({
                     meta: { title: "File a Complaint - Pilar Sorsogon Website", requiresAuth: false }
                 },
                 {
-                    path: "/news/NewsDetails",
+                    path: "/news/:title",
                     component: () => import("@/pages/NewsDetails.vue"),
                     meta: { title: "News and Announcement - Pilar Sorsogon Website", requiresAuth: false }
                 },
@@ -121,6 +150,12 @@ const router = createRouter({
                     path: "/tourism",
                     name: "Tourism",
                     component: () => import("@/pages/Tourism.vue"),
+                    meta: { title: "Tourism  - Pilar Sorsogon Website", requiresAuth: false }
+                },
+                {
+                    path: "/our-officer",
+                    name: "Municipal employee",
+                    component: () => import("@/pages/OurOfficerView.vue"),
                     meta: { title: "Tourism  - Pilar Sorsogon Website", requiresAuth: false }
                 },
             ],

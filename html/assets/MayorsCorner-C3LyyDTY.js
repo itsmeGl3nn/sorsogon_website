@@ -1,0 +1,1 @@
+import{B as r}from"./Banner-DM8YXC4o.js";import{M as e}from"./MayorsCorner-Cm8fWmX9.js";import{_ as n,e as s,o as t,r as a}from"./app-CTQqvN_H.js";import"./pagination-CGJfms2O.js";import"./mayor3-BuBV1Ytx.js";const c={components:{BannerHome:r,MayorsCorners:e}};function m(p,_,f,i,B,d){const o=a("BannerHome");return t(),s(o)}const H=n(c,[["render",m]]);export{H as default};

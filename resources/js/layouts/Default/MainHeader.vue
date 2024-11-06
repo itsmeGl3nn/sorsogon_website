@@ -112,7 +112,7 @@ import logo from "/resources/assets/Logo.png"
           },
           {
             label: "Our Office",
-            link: "/office",
+            link: "/our-officer",
           },
           {
             label: "Contact Us",

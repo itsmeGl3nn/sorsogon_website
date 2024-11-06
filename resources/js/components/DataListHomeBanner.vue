@@ -184,46 +184,46 @@ export default {
         },
 
         async updateHomeBanner() {
-            const formData = new FormData();
-            formData.append("title", this.updatenewBanner.title);
+    const formData = new FormData();
+    formData.append("title", this.updatenewBanner.title);
 
-            if (
-                this.updatenewBanner.image &&
-                typeof this.updatenewBanner.image !== "string"
-            ) {
-                formData.append("image", this.updatenewBanner.image);
+    if (
+        this.updatenewBanner.image &&
+        typeof this.updatenewBanner.image !== "string"
+    ) {
+        formData.append("image", this.updatenewBanner.image);
+    }
+
+    try {
+        const response = await axios.post(
+            `/api/home-banners/${this.updatenewBanner.id}`,
+            formData,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+                params: {
+                    _method: "PUT",
+                },
             }
+        );
 
-            try {
-                const response = await axios.post(
-                    `/api/home-banners/${this.updatenewBanner.id}`,
-                    formData,
-                    {
-                        headers: {
-                            "Content-Type": "multipart/form-data",
-                        },
-                        params: {
-                            _method: "PUT",
-                        },
-                    }
-                );
+        const index = this.tableData.findIndex(
+            (item) => item.id === this.updatenewBanner.id
+        );
+        if (index !== -1) {
+            this.tableData[index] = response.data.data;
+        }
 
-                const index = this.tableData.findIndex(
-                    (item) => item.id === this.updatenewBanner.id
-                );
-                if (index !== -1) {
-                    this.tableData[index] = response.data.data;
-                }
-
-                this.showEditModal = false;
-                this.resetUpdateBanner();
-                await this.getdata();
-            } catch (error) {
-                console.error("Error updating banner:", error);
-            }
-        },
-
-
+        this.showEditModal = false;
+        this.resetUpdateBanner(); // Reset data object
+        this.$refs.form.reset();  // Reset the form
+        await this.getdata(); // Refresh the table data
+    } catch (error) {
+        console.error("Error updating banner:", error);
+    }
+}
+,
         async deleteItem(id, index) {
             if (confirm("Are you sure you want to delete this Data?")) {
                 try {
@@ -250,27 +250,29 @@ export default {
             console.log(this.tableData);
         },
         async createHomeBanner() {
-            const formData = new FormData();
-            formData.append("title", this.newBanner.title);
-            formData.append("image", this.newBanner.image);
+    const formData = new FormData();
+    formData.append("title", this.newBanner.title);
+    formData.append("image", this.newBanner.image);
 
-            try {
-                const response = await axios.post(
-                    "/api/home-banners",
-                    formData,
-                    {
-                        headers: {
-                            "Content-Type": "multipart/form-data",
-                        },
-                    }
-                );
-                this.showCreateModal = false;
-                this.resetUpdateBanner();
-                await this.getdata(); // Refresh the table data
-            } catch (error) {
-                console.error("Error creating banner:", error);
+    try {
+        const response = await axios.post(
+            "/api/home-banners",
+            formData,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
             }
-        },
+        );
+        this.showCreateModal = false;
+        this.resetUpdateBanner(); // Reset the data object
+        this.$refs.form.reset();  // Reset the form itself
+        await this.getdata(); // Refresh the table data
+    } catch (error) {
+        console.error("Error creating banner:", error);
+    }
+},
+
         resetUpdateBanner() {
             this.updatenewBanner = {
                 title: "",

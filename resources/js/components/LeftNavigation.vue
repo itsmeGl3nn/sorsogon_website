@@ -127,11 +127,27 @@ export default {
         const profile = computed(() => profileStore);
         const show = ref(false);
         const cmsData = ref([
-            { title: "CMS - Home Banner ", type: "text", path: "/cms-homebanner" },
-            { title: "CMS - Employees", type: "text", path: "/data-employees" },
-            { title: "CMS - News and Advisories", type: "text", path: "/news" },
-            { title: "CMS - About Us", type: "text", path: "/news" },
-
+            {
+                title: "CMS - Home Banner ",
+                type: "text",
+                path: "/cms-homebanner",
+            },
+            {
+                title: "CMS - Municipal Officers",
+                type: "text",
+                path: "/data-municipalofficers",
+            },
+            {
+                title: "CMS - News and Advisories",
+                type: "text",
+                path: "/data-news",
+            },
+            { title: "CMS - About Us", type: "text", path: "/data-about" },
+            {
+                title: "CMS - Line Agencies",
+                type: "text",
+                path: "/data-agencies",
+            },
         ]);
 
         const userRole = computed(() => profileStore.role);
