@@ -171,33 +171,33 @@
       "button":  "Book Now",
        "link": "/appointment"
     },
-    {
-      "id": 3,
-      "title": "Product 3",
-      "description": "This is a short description of Product 3.",
-      "backgroundImage": "https://picsum.photos/200/300",
-      "featuredProduct": true,
-      "button":  "Learn More",
-       "link": "/appointment"
-    },
-    {
-      "id": 4,
-      "title": "Product 4",
-      "description": "This is a short description of Product 4.",
-      "backgroundImage": "https://picsum.photos/200/300",
-      "featuredProduct": true,
-      "button":  "Learn More",
-       "link": "/appointment"
-    },
-    {
-      "id": 5,
-      "title": "Product 5",
-      "description": "This is a short description of Product 5. Again, this description is longer to demonstrate truncation when displayed in the UI.",
-      "backgroundImage": "/images/product5.jpg",
-      "featuredProduct": false,
-      "button":  "Learn More",
-       "link": "/appointment"
-    },
+    // {
+    //   "id": 3,
+    //   "title": "Product 3",
+    //   "description": "This is a short description of Product 3.",
+    //   "backgroundImage": "https://picsum.photos/200/300",
+    //   "featuredProduct": true,
+    //   "button":  "Learn More",
+    //    "link": "/appointment"
+    // },
+    // {
+    //   "id": 4,
+    //   "title": "Product 4",
+    //   "description": "This is a short description of Product 4.",
+    //   "backgroundImage": "https://picsum.photos/200/300",
+    //   "featuredProduct": true,
+    //   "button":  "Learn More",
+    //    "link": "/appointment"
+    // },
+    // {
+    //   "id": 5,
+    //   "title": "Product 5",
+    //   "description": "This is a short description of Product 5. Again, this description is longer to demonstrate truncation when displayed in the UI.",
+    //   "backgroundImage": "/images/product5.jpg",
+    //   "featuredProduct": false,
+    //   "button":  "Learn More",
+    //    "link": "/appointment"
+    // },
         ],
         divHeights: [],
         modules: [Navigation, Autoplay, Pagination],

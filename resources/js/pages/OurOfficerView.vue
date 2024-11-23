@@ -1,7 +1,7 @@
 <template>
     <BannerHome />
     <OurOfficer/>
-    <MayorsCorners />
+    <!-- <MayorsCorners /> -->
     <NewsList/>
 </template>
 <script>

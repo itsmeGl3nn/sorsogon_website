@@ -26,6 +26,7 @@
             <th>Reasons</th>
             <th>Mobile Number</th>
             <th>Email</th>
+            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -41,6 +42,7 @@
             <td>{{ item.reasons }}</td>
             <td>{{ item.mobile_num }}</td>
             <td>{{ item.email }}</td>
+            <!-- <td class="status">{{ item.status }}</td> -->
             <td>
               <v-col>
                 <v-icon color="blue" @click="editItem(index)"

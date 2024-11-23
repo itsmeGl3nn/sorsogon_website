@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('mobile_num');
             $table->string('email')->unique();
             $table->string('reasons')->nullable();
+            $table->string('status');
             $table->date('date')->nullable();
             $table->string('time')->nullable();
             $table->timestamps();
