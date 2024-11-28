@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('complaint');
             $table->string('mobile_num');
             $table->string('status');
+            $table->string('proof');
             $table->string('email')->unique();
             $table->timestamps();
         });

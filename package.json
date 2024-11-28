@@ -21,6 +21,7 @@
         "aos": "^2.3.4",
         "pinia": "^2.2.2",
         "swiper": "^11.1.10",
+        "vue-writer": "^2.0.2",
         "vue3-marquee": "^4.2.1",
         "vuejs3-datepicker": "^1.0.19",
         "vuetify": "^3.7.3"

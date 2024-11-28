@@ -136,6 +136,15 @@
                                         auto-grow
                                         shaped
                                     ></v-textarea>
+                                    <v-file-input
+                                        color="#FFFFF"
+                                        variant="outlined"
+                                        rounded="lg"
+                                        class="mt-5 text-white"
+                                        v-model="proof"
+                                        label="Upload proof image"
+                                        accept="image/*"
+                                    ></v-file-input>
                                 </v-col>
                             </v-row>
                             <div class="d-flex justify-center pt-6">
@@ -160,7 +169,9 @@
         <v-dialog v-model="successDialog" persistent max-width="400">
             <v-card>
                 <v-card-title class="headline">Success</v-card-title>
-                <v-card-text>Your Complaint has been successfully added.</v-card-text>
+                <v-card-text
+                    >Your Complaint has been successfully added.</v-card-text
+                >
                 <v-card-actions>
                     <v-btn color="primary" @click="closeDialog">OK</v-btn>
                 </v-card-actions>
@@ -181,6 +192,7 @@ export default {
             last_name: "",
             address: "",
             email: "",
+            proof: "",
             complaint: "",
             loading: false,
             mobile_num: "",
@@ -209,6 +221,7 @@ export default {
             this.mobile_num = "";
             this.email = "";
             this.complaint = "";
+            this.proof= "";
         },
         async submit() {
             this.loading = true;
@@ -219,10 +232,15 @@ export default {
                     address: this.address,
                     mobile_num: this.mobile_num,
                     email: this.email,
+                    proof: this.proof,
                     complaint: this.complaint,
                 };
 
-                const response = await axios.post("/api/complaints", formData);
+                const response = await axios.post("/api/complaints", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                });
                 this.loading = false;
                 this.successDialog = true;
             } else {

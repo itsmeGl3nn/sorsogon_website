@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Complaint extends Model
 {
@@ -20,5 +21,11 @@ class Complaint extends Model
         'complaint',
         'mobile_num',
         'email',
+        'proof'
     ];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? Storage::url($this->image) : null;
+    }
 }

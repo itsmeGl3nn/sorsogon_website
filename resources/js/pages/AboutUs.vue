@@ -1,18 +1,21 @@
 <template>
     <BannerAbout />
-    <AboutUs/>
+    <About/>
     <MissionVission/>
+    <OurStory/>
 </template>
 <script>
 import BannerAbout from '@/components/AboutUs/Banner.vue';
-import AboutUs from '@/components/AboutUs/AboutUs.vue';
+import About from '@/components/AboutUs/About.vue';
 import MissionVission from '@/components/AboutUs/MissionAndVision.vue';
+import OurStory from '@/components/AboutUs/OurStory.vue';
 
 export default {
     components: {
         BannerAbout,
-        AboutUs,
-        MissionVission
+        About,
+        MissionVission,
+        OurStory
     }
 };
 </script>

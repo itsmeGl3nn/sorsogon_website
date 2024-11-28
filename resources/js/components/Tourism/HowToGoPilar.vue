@@ -24,7 +24,7 @@
 
   <script>
   import TitleCombo from '@/components/staples/TitleCombo.vue';
-
+  import thumbnail from "/resources/assets/maxresdefault.jpg";
   export default {
     components: { TitleCombo },
     data() {
@@ -32,23 +32,23 @@
         dataList: [
           {
             content: "From Manila by Air: Take Philippine Airlines or Cebu Pacific to Legazpi City, then an air-conditioned van to Pilar (50 minutes). Alternatively, take Asean Spirit or Cebu Pacific to Masbate City, followed by the 9:30 AM Montenegro Fast Craft trip to Pilar.",
-            image: "https://via.placeholder.com/300x200.png?text=Manila+to+Pilar",
+            image: thumbnail,
           },
           {
             content: "From Manila by Land: From Araneta Center Bus Terminal in Cubao, Quezon City, take buses that directly travel to Pilar. Similar options are available from Pasay City Bus Terminal.",
-            image: "https://via.placeholder.com/300x200.png?text=Manila+Bus+to+Pilar",
+            image: thumbnail,
           },
           {
             content: "From Cebu City by Air: Fly Cebu Pacific from Mactan International Airport to Legazpi City, then take a van ride to Pilar.",
-            image: "https://via.placeholder.com/300x200.png?text=Cebu+to+Pilar",
+            image: thumbnail,
           },
           {
             content: "From Cebu City by Sea: Take Roro from Bogo, Cebu to Cataingan or Cawayan in Masbate. From there, take Roro or Fastcraft to Pilar.",
-            image: "https://via.placeholder.com/300x200.png?text=Cebu+Roro+to+Pilar",
+            image: thumbnail,
           },
           {
             content: "From Roxas City by Sea: Take a passenger outrigger from Roxas City Port to Milagros, Balod, or Mandaon in Masbate. Then transfer to a van for a one-hour trip to Pilar.",
-            image: "https://via.placeholder.com/300x200.png?text=Roxas+City+to+Pilar",
+            image: thumbnail,
           },
         ],
       };

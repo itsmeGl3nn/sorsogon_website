@@ -6,8 +6,10 @@
                     <v-form v-model="form">
                         <div class="px-4 py-6">
                             <div class="d-flex justify-center">
-                                <v-img :src="logo" :width="smAndUp ? 140 : 150" height="100" aspect-ratio="16/9" contain
+                                <a href="/">
+                                <v-img   :src="logo" :width="smAndUp ? 140 : 150" height="100" aspect-ratio="16/9" contain
                                     alt="Logo_sorsogon"></v-img>
+                                </a>
                             </div>
                             <v-text-field v-model="email" label="Email" placeholder="Type your Email Address" flat
                                 variant="outlined" rounded="lg" id="email" class="mt-3" :rules="[
