@@ -31,7 +31,7 @@
                         ref="swiperRef"
                     >
                         <swiper-slide
-                            v-for="(item, index) in leaders"
+                               v-for="(officer, index) in officers"
                             :key="index"
                             :lazy="true"
                         >
@@ -44,18 +44,27 @@
                                     class="card-container"
                                 >
                                     <v-img
-                                        :src="item.image"
+                                        :src="officer.image"
                                         :height="smAndUp ? 300 : 400"
                                         cover
-                                        :alt="`${item.name} ${item.position} image`"
+                                        :alt="`${officer.name} ${officer.position} image`"
                                     ></v-img>
                                     <v-card-item class="text-center pt-8">
                                         <div
                                             class="text-md-body-text text-body-1 font-weight-medium"
                                         >
-                                            {{ item.name }}
+                                            {{ officer.full_name }}
                                         </div>
-
+                                        <div
+                                            class="text-md-body-text text-body-1 font-weight-medium"
+                                        >
+                                            {{ officer.position }}
+                                        </div>
+                                        <div
+                                            class="text-md-body-text text-body-1 font-weight-medium"
+                                        >
+                                            {{ officer.department }}
+                                        </div>
                                     </v-card-item>
                                 </v-card>
                             </div>
@@ -69,7 +78,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
 import { useDisplay } from "vuetify";
@@ -87,27 +96,11 @@ const description = ref(
 const { name } = useDisplay();
 const { smAndUp } = useDisplay();
 const modules = [Navigation, Autoplay, EffectFade, Pagination];
-const leaders = ref([
-    {
-        name: "John Doe",
-        position: "CEO",
-        image: "https://via.placeholder.com/300x400", // Replace with an actual image URL
-    },
-    {
-        name: "Jane Smith",
-        position: "COO",
-        image: "https://via.placeholder.com/300x400", // Replace with an actual image URL
+const officers = ref([]);
 
-    },
-    {
-        name: "Alex Johnson",
-        position: "CFO",
-        image: "https://via.placeholder.com/300x400", // Replace with an actual image URL
-    },
-]);
 
 const leadersLength = computed(() => {
-    return leaders.value.length;
+    return officers.value.length;
 });
 
 const swiperRef = ref(null);
@@ -160,6 +153,23 @@ watch(
     },
     { deep: true }
 );
+
+onMounted(async () => {
+    try {
+        const response = await fetch("/api/municipal-officers?page=1&limit=10");
+        const data = await response.json();
+
+        // Map response data to align with Swiper slide structure
+        officers.value = data.data.map((officer) => ({
+            full_name: officer.full_name,
+            position: officer.position,
+            department: officer.department,
+            image: officer.image, // Already processed with full URL by the backend
+        }));
+    } catch (error) {
+        console.error("Error fetching municipal officer data:", error);
+    }
+});
 </script>
 
 <style lang="scss">

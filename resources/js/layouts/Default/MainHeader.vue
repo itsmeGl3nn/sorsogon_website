@@ -114,10 +114,10 @@ import logo from "/resources/assets/Logo.png"
             label: "Our Office",
             link: "/our-officer",
           },
-          {
-            label: "Contact Us",
-            link: "/contact-us",
-          },
+        //   {
+        //     label: "Contact Us",
+        //     link: "/contact-us",
+        //   },
         ],
       };
     },

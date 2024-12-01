@@ -5,14 +5,14 @@
                 <v-col cols="12">
                     <div class="d-flex justify-space-between align-center">
                         <h2 class="text-h4">List of Complaints</h2>
-                        <!-- <div>
+                        <div>
                             <v-btn
                                 color="primary"
-                                @click="createData"
+                                @click="deletedComplaints"
                                 append-icon="mdi-plus"
-                                >Create Data</v-btn
+                                >Archive</v-btn
                             >
-                        </div> -->
+                        </div>
                     </div>
                 </v-col>
             </v-row>
@@ -29,7 +29,7 @@
                     <th>Complaint</th>
                     <th>Mobile Number</th>
                     <th>Email</th>
-                    <th>Status</th>
+                    <th>Proof</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -43,7 +43,15 @@
                     <td>{{ item.complaint }}</td>
                     <td>{{ item.mobile_num }}</td>
                     <td>{{ item.email }}</td>
-                    <td class="status">On Going</td>
+                    <td>
+                        <img
+                            :src="item.proof"
+                            alt="Image"
+                            width="250"
+                            height="250"
+                        />
+                    </td>
+                    <!-- <td class="status">On Going</td> -->
                     <td>
                         <v-col>
                             <v-icon color="blue" @click="editItem(index)"

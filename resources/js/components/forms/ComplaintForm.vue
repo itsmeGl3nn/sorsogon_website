@@ -2,20 +2,7 @@
     <div class="bg-class h-120 w-120" :style="backgroundStyle">
         <v-container class="py-md-8 py-4 h-100">
             <v-row>
-                <v-col col="12" md="6">
-                    <!-- <div class="text-h3 text-white pt-4">
-                        REPORT A COMPLAINT
-                    </div>
-                    <div class="text-body-2 pt-4 text-white">
-                        The Municipality of Pilar, Sorsogon is committed to providing excellent service to our
-                        residents. To
-                        achieve this, we have implemented a Complaint Management System. This system allows residents to
-                        easily report issues and concerns they encounter within the municipality. By logging a
-                        complaint,
-                        you're helping us identify areas for improvement and ensure a safe and enjoyable community for
-                        everyone.
-                    </div> -->
-                </v-col>
+
                 <v-col col="12" md="6">
                     <v-card
                         min-height="600px"
@@ -164,6 +151,20 @@
                         </v-form>
                     </v-card>
                 </v-col>
+                <v-col col="12" md="6">
+                    <!-- <div class="text-h3 text-white pt-4">
+                        REPORT A COMPLAINT
+                    </div>
+                    <div class="text-body-2 pt-4 text-white">
+                        The Municipality of Pilar, Sorsogon is committed to providing excellent service to our
+                        residents. To
+                        achieve this, we have implemented a Complaint Management System. This system allows residents to
+                        easily report issues and concerns they encounter within the municipality. By logging a
+                        complaint,
+                        you're helping us identify areas for improvement and ensure a safe and enjoyable community for
+                        everyone.
+                    </div> -->
+                </v-col>
             </v-row>
         </v-container>
         <v-dialog v-model="successDialog" persistent max-width="400">
@@ -180,7 +181,7 @@
     </div>
 </template>
 <script>
-import backgroundImage from "/resources/assets/banners/mayor3.jpg";
+import backgroundImage from "/resources/assets/bgget.png";
 import axios from "axios";
 
 export default {
@@ -211,6 +212,7 @@ export default {
         closeDialog() {
             this.successDialog = false;
             this.resetForm();
+            this.$router.push("/");
         },
 
         resetForm() {
@@ -243,6 +245,7 @@ export default {
                 });
                 this.loading = false;
                 this.successDialog = true;
+
             } else {
                 this.loading = false;
             }

@@ -18,18 +18,18 @@ return new class extends Migration
             $table->string('address');
             $table->string('complaint');
             $table->string('mobile_num');
-            $table->string('status');
             $table->string('proof');
             $table->string('email')->unique();
             $table->timestamps();
+            $table->softDeletes();  // Adds a nullable deleted_at column
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+
+    public function down()
     {
-        Schema::dropIfExists('complaints');
+        Schema::table('complaints', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 };

@@ -23,8 +23,7 @@
                 </div>
             </v-col>
         </v-row>
-
-        <v-row>
+        <v-row v-if="blogs.length > 0">
             <v-col
                 cols="12"
                 md="4"
@@ -33,7 +32,10 @@
                 data-aos="fade-up"
                 data-aos-duration="1200"
             >
-                <div class="d-flex flex-column justify-space-between" style="height: 100%">
+                <div
+                    class="d-flex flex-column justify-space-between"
+                    style="height: 100%"
+                >
                     <div>
                         <div class="img-wrapper mb-4">
                             <v-img
@@ -46,7 +48,6 @@
                         </div>
                         <div class="d-flex flex-wrap align-center mt-2 mb-2">
                             <div
-
                                 class="bg-primary rounded-xl px-4 py-1 mr-1 mb-1 text-uppercase text-caption"
                             >
                                 {{ blog.category }}
@@ -55,7 +56,10 @@
                                 by {{ blog.author }}
                             </div>
                         </div>
-                        <div class="text-subtitle-2 font-weight-bold mb-2 text-primary" style="font-family: 'Poppins', sans-serif">
+                        <div
+                            class="text-subtitle-2 font-weight-bold mb-2 text-primary"
+                            style="font-family: 'Poppins', sans-serif"
+                        >
                             {{ blog.title }}.
                         </div>
                         <div class="text-body-1">
@@ -85,44 +89,58 @@
                             variant="plain"
                             append-icon="mdi-chevron-right"
                             class="font-weight-bold pa-0 mt-6"
-                        :href="`/news/${blog.title}`"
+                            :href="`/news/${blog.title}`"
                             >READ MORE</v-btn
                         >
                     </div>
                 </div>
             </v-col>
+<v-col cols="12" md="12">
+    <div>
+                <v-pagination
+                class="mt-10"
+                v-model="currentPage"
+                :total-visible="7"
+                :length="meta.totalPages"
+                @input="changePage"
+            >
+                <template #prev>
+                    <v-btn
+                        @click="previousPage"
+                        height="100%"
+                        :disabled="currentPage === 1"
+                        :class="{ 'disabled-btn': currentPage === 1 }"
+                    >
+                        <v-icon>mdi-chevron-left</v-icon>
+                        Previous
+                    </v-btn>
+                </template>
+                <template #next>
+                    <v-btn
+                        @click="nextPage"
+                        height="100%"
+                        :disabled="currentPage === meta.totalPages"
+                        :class="{
+                            'disabled-btn': currentPage === meta.totalPages,
+                        }"
+                    >
+                        Next
+                        <v-icon>mdi-chevron-right</v-icon>
+                    </v-btn>
+                </template>
+            </v-pagination>
+            </div>
+</v-col>
+
         </v-row>
 
-        <v-pagination
-            class="mt-10"
-            v-model="currentPage"
-            :total-visible="7"
-            :length="meta.totalPages"
-            @input="changePage"
-        >
-            <template #prev>
-                <v-btn
-                    @click="previousPage"
-                    height="100%"
-                    :disabled="currentPage === 1"
-                    :class="{ 'disabled-btn': currentPage === 1 }"
-                >
-                    <v-icon>mdi-chevron-left</v-icon>
-                    Previous
-                </v-btn>
-            </template>
-            <template #next>
-                <v-btn
-                    @click="nextPage"
-                    height="100%"
-                    :disabled="currentPage === meta.totalPages"
-                    :class="{ 'disabled-btn': currentPage === meta.totalPages }"
-                >
-                    Next
-                    <v-icon>mdi-chevron-right</v-icon>
-                </v-btn>
-            </template>
-        </v-pagination>
+        <v-row v-else>
+            <v-col cols="12" class="text-center">
+                <div class="text-h6 text-secondary font-weight-medium">
+                    No News Found
+                </div>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 

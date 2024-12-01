@@ -226,10 +226,10 @@ import logo from "/resources/assets/Logo.png"
             label: "Tourism",
             link: "/tourism",
           },
-          {
-            label: "Help Center",
-            link: "/help-center",
-          },
+        //   {
+        //     label: "Help Center",
+        //     link: "/help-center",
+        //   },
         ],
       };
     },

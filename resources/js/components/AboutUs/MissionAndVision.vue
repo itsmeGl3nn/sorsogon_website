@@ -44,7 +44,7 @@
                     <v-icon size="x-large" icon="mdi-numeric-1" color="#02BBFF"></v-icon>
                   </span>
                   <div class="pl-4">
-                    <p class="font-custom-body text-font-black font-weight-medium">
+                    <p class="font-custom-body text-font-black font-weight-bold">
                       {{ datas.missionHeadline }}
                     </p>
                     <p class="text-body-1 text-base-font-black lh-45">
@@ -57,7 +57,7 @@
                     <v-icon size="x-large" icon="mdi-numeric-2" color="#02BBFF"></v-icon>
                   </span>
                   <div class="pl-4">
-                    <p class="font-custom-body text-font-black font-weight-medium">
+                    <p class="font-custom-body text-font-black font-weight-bold">
                       {{ datas.visionHeadline }}
                     </p>
                     <p class="text-body-1 text-base-font-black lh-45">
@@ -100,10 +100,10 @@
         datas: {
           missionVisionHeadline: "",
           missionVisionDescription: "",
-          missionHeadline: "",
-          missionDescription: "",
-          visionHeadline: "",
-          visionDescription: "",
+          missionHeadline: "Mission",
+          missionDescription: "To uplift the quality of life of pilareños thorugh excelent local goveenance, futher development of a well-equipped municipal port, eco-tourism, agri-based industry and human resources with active participation of all stakeholders.",
+          visionHeadline: "Vission",
+          visionDescription: "A center of excelence in local governance and an ideal transhipment point  with empowered  people living in a life-enhancing  evironment guided by devine providence.",
         },
       };
     },

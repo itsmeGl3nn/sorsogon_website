@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Complaint extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     // Specify the table name if it doesn't follow the Laravel convention
     protected $table = 'complaints';
@@ -26,6 +27,6 @@ class Complaint extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? Storage::url($this->image) : null;
+        return $this->proof ? Storage::url($this->proof) : null;
     }
 }

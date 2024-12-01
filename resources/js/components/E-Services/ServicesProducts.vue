@@ -24,7 +24,7 @@
               :max-width="'auto'"
               :lazy-src="item.backgroundImage"
               :src="item.backgroundImage"
-              cover
+              contain
               position="center"
               :alt="`${item.title} featured image`"
               class="card-image d-flex align-end"
@@ -135,6 +135,7 @@
   </template>
 
   <script>
+  import logo from "../../../assets/NewLogo.png";
   import { Navigation, Pagination, Autoplay } from "swiper/modules";
   import { Swiper, SwiperSlide } from "swiper/vue";
   import "swiper/css";
@@ -157,7 +158,7 @@
       "id": 1,
       "title": "Report an Issue or Concern",
       "description": "Have a problem or suggestion? Let us know.",
-      "backgroundImage": "https://picsum.photos/200/300",
+      "backgroundImage": logo,
       "featuredProduct": true,
       "button":  "Report Now",
       "link": "/file-complaint"
@@ -166,7 +167,7 @@
       "id": 2,
       "title": "Schedule a Meeting",
       "description": "Need to meet with us? Book an appointment now.",
-      "backgroundImage": "https://picsum.photos/200/300",
+     "backgroundImage": logo,
       "featuredProduct": true,
       "button":  "Book Now",
        "link": "/appointment"

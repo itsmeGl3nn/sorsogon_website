@@ -19,6 +19,19 @@ class MunicipalOfficerController extends Controller
         $officers = MunicipalOfficer::orderBy('id', 'desc')
             ->paginate($limit, ['*'], 'page', $page);
 
+
+            $officers->getCollection()->transform(function ($officer) {
+                return [
+                    'id' => $officer->id,
+                    'full_name' => $officer->full_name,
+                    'position' => $officer->position,
+                    'department' => $officer->department,
+                    'image' => $officer->image_url,
+                    'created_at' => $officer->created_at,
+                    'updated_at' => $officer->updated_at,
+                ];
+            });
+
         return response()->json([
             'message' => 'Municipal Officers retrieved successfully',
             'data' => $officers->items(),

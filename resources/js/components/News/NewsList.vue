@@ -101,8 +101,9 @@
                     </div>
                 </div>
             </v-col>
-
-            <v-pagination
+<v-col cols="12" md="12">
+    <div>
+                <v-pagination
                 class="mt-10"
                 v-model="currentPage"
                 :total-visible="7"
@@ -134,6 +135,9 @@
                     </v-btn>
                 </template>
             </v-pagination>
+            </div>
+</v-col>
+
         </v-row>
 
         <v-row v-else>
@@ -143,6 +147,8 @@
                 </div>
             </v-col>
         </v-row>
+
+
     </v-container>
 </template>
 

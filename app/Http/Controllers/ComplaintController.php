@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Complaint;
+use Illuminate\Support\Facades\Storage;
 
 class ComplaintController extends Controller
 {
@@ -20,7 +21,10 @@ class ComplaintController extends Controller
             'complaint'  => 'required|string|max:255',
             'mobile_num' => 'required|string|max:15',
             'email'      => 'required|string|email|max:255|unique:complaints,email',
+            'proof' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048',
         ]);
+
+        $imagePath = $request->file('proof')->store('images/complaints', 'public');
 
         // Create a new complaint record in the database
         $complaint = Complaint::create([
@@ -30,7 +34,9 @@ class ComplaintController extends Controller
             'complaint'  => $request->complaint,
             'mobile_num' => $request->mobile_num,
             'email'      => $request->email,
+            'proof' => $imagePath,
         ]);
+
 
         // Return a response
         return response()->json([
@@ -46,7 +52,24 @@ class ComplaintController extends Controller
         $limit = $request->input('limit', 10);
 
         $complaints = Complaint::orderBy('id', 'desc')
-            ->paginate($limit, ['*'], 'page', $page);
+        ->whereNull('deleted_at') // Exclude soft-deleted records
+        ->paginate($limit, ['*'], 'page', $page);
+
+        $complaints->getCollection()->transform(function ($complaint) {
+            return [
+                'id'           => $complaint->id,
+                'first_name'   => $complaint->first_name,
+                'last_name'    => $complaint->last_name,
+                'address'      => $complaint->address,
+                'complaint'    => $complaint->complaint,
+                'mobile_num'   => $complaint->mobile_num,
+                'email'        => $complaint->email,
+                'proof' => $complaint->image_url,
+                'created_at'   => $complaint->created_at,
+                'updated_at'   => $complaint->updated_at,
+            ];
+        });
+
 
         return response()->json([
             'message' => 'Complaints retrieved successfully',
@@ -63,18 +86,49 @@ class ComplaintController extends Controller
         ], 200);
     }
 
+    public function trashedComplaints(Request $request)
+    {
+        // Fetch all soft-deleted records (trashed complaints) without pagination
+        $complaints = Complaint::onlyTrashed()
+            ->orderBy('id', 'desc') // Order the complaints by ID in descending order
+            ->get(); // Get all trashed complaints without pagination
+
+        // Transform the collection
+        $complaints = $complaints->transform(function ($complaint) {
+            return [
+                'id'           => $complaint->id,
+                'first_name'   => $complaint->first_name,
+                'last_name'    => $complaint->last_name,
+                'address'      => $complaint->address,
+                'complaint'    => $complaint->complaint,
+                'mobile_num'   => $complaint->mobile_num,
+                'email'        => $complaint->email,
+                'proof'        => $complaint->image_url,
+                'created_at'   => $complaint->created_at,
+                'updated_at'   => $complaint->updated_at,
+                'deleted_at'   => $complaint->deleted_at,
+            ];
+        });
+
+        return response()->json([
+            'message' => 'Trashed complaints retrieved successfully',
+            'data'    => $complaints,
+        ], 200);
+    }
+
+
+
     public function delete($id)
     {
-
         $complaint = Complaint::find($id);
 
-        if (!$complaint) {
-            return response()->json([
-                'message' => 'Complaint not found'
-            ], 404);
-        }
+        $complaint = Complaint::findOrFail($id);
+        Storage::disk('public')->delete($complaint->image);
 
+
+        // Delete the complaint record
         $complaint->delete();
+
         return response()->json([
             'message' => 'Complaint deleted successfully'
         ], 200);

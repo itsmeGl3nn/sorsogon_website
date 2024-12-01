@@ -104,13 +104,13 @@ export default {
             thumbnail,
             details: [
                 {
-                    headline: "Headline 1",
-                    description: "Description 1",
+                    headline: "PHYSICAL FEATURES",
+                    description: "Pilar is located at the northwestern part of the province of Sorsogon which is at the southernmost tip of the Bicol Peninsula. It lies at 12 degrees 56' and 44 latitude and 123 degrees,39' and 52'' longitude. it is 57 kilometers road distance from the provincial capital of Sorsogon and 47 kilometers south of the Regional Center of Legazpi City in Albay province. It is bounded on the north by the province of Albay; on the east by the municipality of Castilla; on the south by Pilar Bay; and on the west by the municipality of Donsol.  By bus, Manila –Pilar travel time is 9 to 10 hours; by airplane,Manila-Legazpi is one hour plus a one-hour car-ride from Legazpi-Pilar.",
                     image: thumbnail,
                 },
                 {
-                    headline: "Headline 2",
-                    description: "Description 2",
+                    headline: "ECONOMIC PROFILE",
+                    description: "Despite efforts on diversification, Pilar’s agricultural economy remains to be heavily dependent on the monoculture of coconut which is planted to more than 70% of its total land area. As such, it is a major supplier of copra in the coconut oil milling industry in Bicol yet coconut farmers remain to be below the threshold level. Next to coconut. Rice is produced in 11% of its land, which is about 2,730 hectares but only 483 hectares are irrigated. Corn and root crops are also planted in upland farms as an alternative to rice.",
                     image: thumbnail,
                 },
             ],
