@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Mail\AppointmentCreated;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
@@ -34,6 +36,7 @@ class AppointmentController extends Controller
         'time'       => $request->time,
     ]);
 
+    Mail::to($request->email)->send(new AppointmentCreated($appointments));
 
         return response()->json([
             'message' => 'Book an appointment successfully',

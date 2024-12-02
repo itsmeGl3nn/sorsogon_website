@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('complaint');
             $table->string('mobile_num');
             $table->string('proof');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamps();
             $table->softDeletes();  // Adds a nullable deleted_at column
         });

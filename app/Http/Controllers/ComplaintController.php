@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Complaint;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\ComplaintCreated;
+use Illuminate\Support\Facades\Mail;
 
 class ComplaintController extends Controller
 {
@@ -20,7 +22,7 @@ class ComplaintController extends Controller
             'address'    => 'required|string|max:255',
             'complaint'  => 'required|string|max:255',
             'mobile_num' => 'required|string|max:15',
-            'email'      => 'required|string|email|max:255|unique:complaints,email',
+            'email'      => 'required|string|email|max:255',
             'proof' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048',
         ]);
 
@@ -37,14 +39,15 @@ class ComplaintController extends Controller
             'proof' => $imagePath,
         ]);
 
+        // Send email notification
+        Mail::to($request->email)->send(new ComplaintCreated($complaint));
 
         // Return a response
         return response()->json([
-            'message' => 'Complaint created successfully',
+            'message' => 'Complaint created successfully. A confirmation email has been sent.',
             'data'    => $complaint
         ], 201);
     }
-
 
     public function getcomplaint(Request $request)
     {

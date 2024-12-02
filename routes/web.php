@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Mail\ComplaintCreated;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
+
+
+
+Route::get('/test-mail', function () {
+    Mail::to('okafor21boo@gmail.com')->send(new ComplaintCreated());
+    return 'Mail sent successfully!';
+});
