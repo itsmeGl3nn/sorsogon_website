@@ -5,13 +5,23 @@
                 <v-col cols="12">
                     <div class="d-flex justify-space-between align-center">
                         <h2 class="text-h4">List of Home Banner Data</h2>
-                        <div>
-                            <v-btn
+                        <div class="d-flex">
+                            <div class="px-2 ">
+                                <v-btn
                                 color="primary"
+                                class="px-2 "
                                 @click="openCreateModal"
                                 append-icon="mdi-plus"
                                 >Create Data</v-btn
                             >
+                        </div>
+                            <div class="px-2 ">
+                            <v-btn
+                                color="primary"
+                                @click="openArchive"
+                                >Archive</v-btn
+                            >
+                        </div>
                         </div>
                     </div>
                 </v-col>
@@ -242,6 +252,9 @@ export default {
         },
         handlePageChange(page) {
             this.currentPage = page;
+        },
+        openArchive() {
+            this.$router.push("/archive-banner");
         },
         async getdata() {
             const res = await fetch("/api/home-banners");

@@ -57,4 +57,7 @@ Route::get('/municipal-officers/{id}', [MunicipalOfficerController::class, 'show
 
 
 Route::get('/trashed-complaints', [ComplaintController::class, 'trashedComplaints']);
-Route::post('complaints/restore/{id}', [ComplaintController::class, 'restore']);
+Route::post('/complaints/restore/{id}', [ComplaintController::class, 'restore']);
+
+Route::get('/trashed-banners', [HomeBannerCMSController::class, 'trashedBanner']);
+Route::post('/banners/restore/{id}', [HomeBannerCMSController::class, 'restore']);

@@ -22,36 +22,26 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Address</th>
-                    <th>Complaint</th>
-                    <th>Mobile Number</th>
-                    <th>Email</th>
-                    <th>Proof</th>
-                    <th>Actions</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr v-for="item in archivedComplaints" :key="item.id">
+                <tr v-for="item in archivedBanners" :key="item.id">
                     <td>{{ item.id }}</td>
-                    <td>{{ item.first_name }}</td>
-                    <td>{{ item.last_name }}</td>
-                    <td>{{ item.address }}</td>
-                    <td>{{ item.complaint }}</td>
-                    <td>{{ item.mobile_num }}</td>
-                    <td>{{ item.email }}</td>
                     <td>
                         <img
-                            v-if="item.proof && item.proof !== 'null'"
-                            :src="item.proof"
+                            v-if="item.image && item.image !== 'null'"
+                            :src="item.image"
                             alt="Image"
                             width="250"
                             height="250"
                         />
                         <span v-else>No Image Available</span>
                     </td>
+                    <td>{{ item.title }}</td>
                     <!-- <td class="status">On Going</td> -->
                     <td>
                         <v-col>
@@ -122,7 +112,7 @@ export default {
     data() {
         return {
             tableData: [],
-            archivedComplaints: [],
+            archivedBanners: [],
             itemsPerPage: 3,
             currentPage: 1,
         };
@@ -147,22 +137,6 @@ export default {
         editItem(index) {
             console.log("Edit item:", index);
         },
-        async deleteItem(id, index) {
-            if (confirm("Are you sure you want to delete this complaint?")) {
-                try {
-                    await fetch(`/api/complaints/${id}`, {
-                        method: "DELETE",
-                    });
-                    const itemIndex =
-                        (this.currentPage - 1) * this.itemsPerPage + index;
-                    this.tableData.splice(itemIndex, 1);
-                    alert("Complaint deleted successfully");
-                } catch (error) {
-                    console.error("Error deleting complaint:", error);
-                    alert("Failed to delete complaint");
-                }
-            }
-        },
         handlePageChange(page) {
             this.currentPage = page;
         },
@@ -179,7 +153,7 @@ export default {
         async restoreItem(id) {
         if (confirm("Are you sure you want to restore this complaint?")) {
             try {
-                const response = await fetch(`/api/complaints/restore/${id}`, {
+                const response = await fetch(`/api/banners/restore/${id}`, {
                     method: "POST", // or PUT depending on your setup
                     headers: {
                         "Content-Type": "application/json",
@@ -190,7 +164,7 @@ export default {
 
                 if (response.ok) {
                     // Find and remove the restored complaint from the archived list
-                    this.archivedComplaints = this.archivedComplaints.filter(
+                    this.archivedBanners = this.archivedBanners.filter(
                         (item) => item.id !== id
                     );
                     alert(data.message); // Show success message
@@ -205,9 +179,9 @@ export default {
     },
 
         async getdata() {
-            const res = await fetch("/api/trashed-complaints");
+            const res = await fetch("/api/trashed-banners");
             const data = await res.json();
-            this.archivedComplaints = data.data;
+            this.archivedBanners = data.data;
         },
     },
 };

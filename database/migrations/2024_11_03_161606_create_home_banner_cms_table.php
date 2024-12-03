@@ -18,6 +18,7 @@ class CreateHomeBannerCmsTable extends Migration
             $table->string('image'); // Image column for storing image paths or URLs
             $table->string('title'); // Title column
             $table->timestamps(); // Created and updated timestamps
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,9 @@ class CreateHomeBannerCmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home_banner_cms');
+        Schema::table('home_banner_cms', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
+
     }
 }

@@ -126,7 +126,7 @@ class HomeBannerCMSController extends Controller
     }
 
 
-      public function trashedComplaints(Request $request)
+      public function trashedBanner(Request $request)
     {
         // Fetch trashed complaints with pagination
         $perPage = $request->input('limit', 10); // Default to 10 items per page if no limit is provided
@@ -134,36 +134,31 @@ class HomeBannerCMSController extends Controller
             ->orderBy('id', 'desc')
             ->paginate($perPage);
 
-        // Transform the collection
-        $banners->getCollection()->transform(function ($banner) {
-            return [
-                'id'           => $banner->id,
-                'first_name'   => $banner->first_name,
-                'last_name'    => $banner->last_name,
-                'address'      => $banner->address,
-                'banner'    => $banner->banner,
-                'mobile_num'   => $banner->mobile_num,
-                'email'        => $banner->email,
-                'proof'        => $banner->image_url,
-                'created_at'   => $banner->created_at,
-                'updated_at'   => $banner->updated_at,
-                'deleted_at'   => $banner->deleted_at,
-            ];
-        });
+            $banners->getCollection()->transform(function ($banner) {
+                return [
+                    'id' => $banner->id,
+                    'title' => $banner->title,
+                    'image' => $banner->image_url,  // Use the accessor to get full URL
+                    'created_at'   => $banner->created_at,
+                  'updated_at'   => $banner->updated_at,
+                   'deleted_at'   => $banner->deleted_at,
+                ];
+            });
 
-        return response()->json([
-            'message' => 'Trashed banners retrieved successfully',
-            'data'    => $banners->items(), // Paginated items
-            'meta'    => [
-                'sortBy'      => 'id',
-                'sortOrder'   => 'desc',
-                'page'        => $banners->currentPage(),
-                'limit'       => $banners->perPage(),
-                'total'       => $banners->total(),
-                'count'       => $banners->count(),
-                'totalPages'  => $banners->lastPage(),
-            ]
-        ], 200);
+            return response()->json([
+                'message' => 'Trashed banners retrieved successfully',
+                'data' => $banners->items(),
+                'meta' => [
+                    'sortBy' => 'id',
+                    'sortOrder' => 'desc',
+                    'page' => $banners->currentPage(),
+                    'limit' => $banners->perPage(),
+                    'total' => $banners->total(),
+                    'count' => $banners->count(),
+                    'totalPages' => $banners->lastPage(),
+                ]
+            ], 200);
+
     }
 
 }

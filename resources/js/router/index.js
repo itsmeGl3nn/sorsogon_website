@@ -53,6 +53,16 @@ const router = createRouter({
             meta: { title: "Data Complaint View - Pilar Sorsogon Website", requiresAuth: true }
         },
         {
+            path: '/archive-banner',
+            name: 'archive-banner',
+            components: {
+                'left-nav': () => import('../components/LeftNavigation.vue'),
+                'top-nav': () => import('../components/TopNavigation.vue'),
+                default: () => import('@/pages/ViewArchiveBanner.vue')
+            },
+            meta: { title: "Data Complaint View - Pilar Sorsogon Website", requiresAuth: true }
+        },
+        {
             path: '/data-appointment',
             name: 'data-appointment',
             components: {

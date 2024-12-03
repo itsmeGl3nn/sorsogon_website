@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HomeBannerCMS extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
 
     protected $table = 'home_banner_cms';
 
