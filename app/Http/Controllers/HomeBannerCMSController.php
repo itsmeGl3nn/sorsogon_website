@@ -51,7 +51,7 @@ class HomeBannerCMSController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
         ]);
 
         if ($validator->fails()) {
@@ -66,7 +66,6 @@ class HomeBannerCMSController extends Controller
             // Delete the old image
             Storage::disk('public')->delete($banner->image);
 
-            // Store the new image
             $imagePath = $request->file('image')->store('images/banners', 'public');
             $banner->image = $imagePath;
         }
@@ -83,7 +82,7 @@ class HomeBannerCMSController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5048',
         ]);
 
         if ($validator->fails()) {
@@ -104,9 +103,67 @@ class HomeBannerCMSController extends Controller
     public function delete($id)
     {
         $banner = HomeBannerCMS::findOrFail($id);
-        Storage::disk('public')->delete($banner->image);
+       // Storage::disk('public')->delete($banner->image);
         $banner->delete();
 
         return response()->json(['status' => 'success', 'message' => 'Banner deleted'], 200);
     }
+
+
+    public function restore($id)
+    {
+        $banner = HomeBannerCMS::withTrashed()->find($id);
+
+        if ($banner) {
+            $banner->restore(); // Restore the complaint
+            return response()->json([
+                'message' => 'Banner restored successfully',
+                'data' => $banner
+            ]);
+        }
+
+        return response()->json(['message' => 'Banner not found'], 404);
+    }
+
+
+      public function trashedComplaints(Request $request)
+    {
+        // Fetch trashed complaints with pagination
+        $perPage = $request->input('limit', 10); // Default to 10 items per page if no limit is provided
+        $banners = HomeBannerCMS::onlyTrashed()
+            ->orderBy('id', 'desc')
+            ->paginate($perPage);
+
+        // Transform the collection
+        $banners->getCollection()->transform(function ($banner) {
+            return [
+                'id'           => $banner->id,
+                'first_name'   => $banner->first_name,
+                'last_name'    => $banner->last_name,
+                'address'      => $banner->address,
+                'banner'    => $banner->banner,
+                'mobile_num'   => $banner->mobile_num,
+                'email'        => $banner->email,
+                'proof'        => $banner->image_url,
+                'created_at'   => $banner->created_at,
+                'updated_at'   => $banner->updated_at,
+                'deleted_at'   => $banner->deleted_at,
+            ];
+        });
+
+        return response()->json([
+            'message' => 'Trashed banners retrieved successfully',
+            'data'    => $banners->items(), // Paginated items
+            'meta'    => [
+                'sortBy'      => 'id',
+                'sortOrder'   => 'desc',
+                'page'        => $banners->currentPage(),
+                'limit'       => $banners->perPage(),
+                'total'       => $banners->total(),
+                'count'       => $banners->count(),
+                'totalPages'  => $banners->lastPage(),
+            ]
+        ], 200);
+    }
+
 }

@@ -54,3 +54,7 @@ Route::get('/news', [NewsController::class, 'index']); // List news route
 Route::get('/news/{title}', [NewsController::class, 'show']);  // Add route to get news by title
 Route::get('/municipal-officers', [MunicipalOfficerController::class, 'index']); // List officers route
 Route::get('/municipal-officers/{id}', [MunicipalOfficerController::class, 'show']); // Get officer by ID route
+
+
+Route::get('/trashed-complaints', [ComplaintController::class, 'trashedComplaints']);
+Route::post('complaints/restore/{id}', [ComplaintController::class, 'restore']);

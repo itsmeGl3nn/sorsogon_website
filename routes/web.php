@@ -19,8 +19,3 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 
-
-Route::get('/test-mail', function () {
-    Mail::to('okafor21boo@gmail.com')->send(new ComplaintCreated());
-    return 'Mail sent successfully!';
-});

@@ -55,8 +55,8 @@ class ComplaintController extends Controller
         $limit = $request->input('limit', 10);
 
         $complaints = Complaint::orderBy('id', 'desc')
-        ->whereNull('deleted_at') // Exclude soft-deleted records
-        ->paginate($limit, ['*'], 'page', $page);
+            ->whereNull('deleted_at') // Exclude soft-deleted records
+            ->paginate($limit, ['*'], 'page', $page);
 
         $complaints->getCollection()->transform(function ($complaint) {
             return [
@@ -89,15 +89,34 @@ class ComplaintController extends Controller
         ], 200);
     }
 
+
+    public function delete($id)
+    {
+
+
+        $complaint = Complaint::findOrFail($id);
+      //  Storage::disk('public')->delete($complaint->proof);
+
+
+        // Delete the complaint record
+        $complaint->delete();
+
+        return response()->json([
+            'message' => 'Complaint deleted successfully'
+        ], 200);
+    }
+
+
     public function trashedComplaints(Request $request)
     {
-        // Fetch all soft-deleted records (trashed complaints) without pagination
+        // Fetch trashed complaints with pagination
+        $perPage = $request->input('limit', 10); // Default to 10 items per page if no limit is provided
         $complaints = Complaint::onlyTrashed()
-            ->orderBy('id', 'desc') // Order the complaints by ID in descending order
-            ->get(); // Get all trashed complaints without pagination
+            ->orderBy('id', 'desc')
+            ->paginate($perPage);
 
         // Transform the collection
-        $complaints = $complaints->transform(function ($complaint) {
+        $complaints->getCollection()->transform(function ($complaint) {
             return [
                 'id'           => $complaint->id,
                 'first_name'   => $complaint->first_name,
@@ -115,25 +134,31 @@ class ComplaintController extends Controller
 
         return response()->json([
             'message' => 'Trashed complaints retrieved successfully',
-            'data'    => $complaints,
+            'data'    => $complaints->items(), // Paginated items
+            'meta'    => [
+                'sortBy'      => 'id',
+                'sortOrder'   => 'desc',
+                'page'        => $complaints->currentPage(),
+                'limit'       => $complaints->perPage(),
+                'total'       => $complaints->total(),
+                'count'       => $complaints->count(),
+                'totalPages'  => $complaints->lastPage(),
+            ]
         ], 200);
     }
 
-
-
-    public function delete($id)
+    public function restore($id)
     {
-        $complaint = Complaint::find($id);
+        $complaint = Complaint::withTrashed()->find($id);
 
-        $complaint = Complaint::findOrFail($id);
-        Storage::disk('public')->delete($complaint->image);
+        if ($complaint) {
+            $complaint->restore(); // Restore the complaint
+            return response()->json([
+                'message' => 'Complaint restored successfully',
+                'data' => $complaint
+            ]);
+        }
 
-
-        // Delete the complaint record
-        $complaint->delete();
-
-        return response()->json([
-            'message' => 'Complaint deleted successfully'
-        ], 200);
+        return response()->json(['message' => 'Complaint not found'], 404);
     }
 }

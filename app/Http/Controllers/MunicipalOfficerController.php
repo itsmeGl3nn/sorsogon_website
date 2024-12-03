@@ -54,7 +54,7 @@ class MunicipalOfficerController extends Controller
             'full_name' => 'required|string|max:255',
             'position' => 'required|string|max:255',
             'department' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4048',
         ]);
 
         if ($validator->fails()) {
