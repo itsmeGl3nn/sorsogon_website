@@ -1,1 +1,0 @@
-import{B as e}from"./Banner-OIBtYSEY.js";import{_ as n,e as t,o as r,r as s}from"./app-CTQqvN_H.js";import"./pagination-CGJfms2O.js";import"./mayor3-BuBV1Ytx.js";const a={components:{BannerHome:e}};function c(p,m,_,i,f,B){const o=s("BannerHome");return r(),t(o)}const x=n(a,[["render",c]]);export{x as default};

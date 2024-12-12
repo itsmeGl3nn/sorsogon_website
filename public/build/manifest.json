@@ -1,27 +1,610 @@
 {
+  "_Banner-!~{00B}~.js": {
+    "file": "assets/Banner-DW-eA873.css",
+    "src": "_Banner-!~{00B}~.js"
+  },
+  "_Banner-!~{00t}~.js": {
+    "file": "assets/Banner-CkEH7cYy.css",
+    "src": "_Banner-!~{00t}~.js"
+  },
+  "_Banner-6Yt6jchj.js": {
+    "file": "assets/Banner-6Yt6jchj.js",
+    "name": "Banner",
+    "imports": [
+      "resources/js/app.js",
+      "_pagination-B1-x9Rbr.js"
+    ],
+    "css": [
+      "assets/Banner-DW-eA873.css"
+    ],
+    "assets": [
+      "assets/banner1-aXaiBmgu.jpg",
+      "assets/mayor3-B7JWR2xy.jpg"
+    ]
+  },
+  "_Banner-C22JNTrB.js": {
+    "file": "assets/Banner-C22JNTrB.js",
+    "name": "Banner",
+    "imports": [
+      "resources/js/app.js",
+      "_pagination-B1-x9Rbr.js"
+    ],
+    "css": [
+      "assets/Banner-CkEH7cYy.css"
+    ]
+  },
+  "_DataList.vue_vue_type_style_index_0_scoped_09b6c2f1_lang-!~{00s}~.js": {
+    "file": "assets/DataList-DhWxVmTR.css",
+    "src": "_DataList.vue_vue_type_style_index_0_scoped_09b6c2f1_lang-!~{00s}~.js"
+  },
+  "_MapPilar-Ctfs9RKY.js": {
+    "file": "assets/MapPilar-Ctfs9RKY.js",
+    "name": "MapPilar",
+    "assets": [
+      "assets/MapPilar-CIi_gdOp.png"
+    ]
+  },
+  "_MayorsCorner-!~{00u}~.js": {
+    "file": "assets/MayorsCorner-xFNfsipv.css",
+    "src": "_MayorsCorner-!~{00u}~.js"
+  },
+  "_MayorsCorner-DZU2bczA.js": {
+    "file": "assets/MayorsCorner-DZU2bczA.js",
+    "name": "MayorsCorner",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/MayorsCorner-xFNfsipv.css"
+    ],
+    "assets": [
+      "assets/Mayor_Homepage-BIt2uX7d.png",
+      "assets/mayors-corner-bg-50-BRrmNnTu.jpg"
+    ]
+  },
+  "_NewLogo-D_1dYNnW.js": {
+    "file": "assets/NewLogo-D_1dYNnW.js",
+    "name": "NewLogo",
+    "assets": [
+      "assets/NewLogo-DkbPwCWp.png"
+    ]
+  },
+  "_NewsListHome-!~{00w}~.js": {
+    "file": "assets/NewsListHome-BB1d95rq.css",
+    "src": "_NewsListHome-!~{00w}~.js"
+  },
+  "_NewsListHome-TjUagPGS.js": {
+    "file": "assets/NewsListHome-TjUagPGS.js",
+    "name": "NewsListHome",
+    "imports": [
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/NewsListHome-BB1d95rq.css"
+    ]
+  },
+  "_Vicinity-!~{00v}~.js": {
+    "file": "assets/Vicinity-D6St86zU.css",
+    "src": "_Vicinity-!~{00v}~.js"
+  },
+  "_Vicinity-B0re3UPd.js": {
+    "file": "assets/Vicinity-B0re3UPd.js",
+    "name": "Vicinity",
+    "imports": [
+      "_MapPilar-Ctfs9RKY.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Vicinity-D6St86zU.css"
+    ],
+    "assets": [
+      "assets/map-Cwypx8-M.jpg"
+    ]
+  },
+  "_axios-CCb-kr4I.js": {
+    "file": "assets/axios-CCb-kr4I.js",
+    "name": "axios"
+  },
+  "_bgget-B-RAAbUv.js": {
+    "file": "assets/bgget-B-RAAbUv.js",
+    "name": "bgget",
+    "assets": [
+      "assets/bgget-D7TRwp0Z.png"
+    ]
+  },
+  "_maxresdefault-CDtGSuCc.js": {
+    "file": "assets/maxresdefault-CDtGSuCc.js",
+    "name": "maxresdefault",
+    "assets": [
+      "assets/maxresdefault-Gln1dEBv.jpg"
+    ]
+  },
+  "_pagination-!~{00x}~.js": {
+    "file": "assets/pagination-Ds_YmOBQ.css",
+    "src": "_pagination-!~{00x}~.js"
+  },
+  "_pagination-B1-x9Rbr.js": {
+    "file": "assets/pagination-B1-x9Rbr.js",
+    "name": "pagination",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/pagination-Ds_YmOBQ.css"
+    ]
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
+    "file": "assets/materialdesignicons-webfont-CSr8KVlo.eot",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf": {
+    "file": "assets/materialdesignicons-webfont-B7mPwVP_.ttf",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff": {
+    "file": "assets/materialdesignicons-webfont-PXm3-2wK.woff",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2": {
+    "file": "assets/materialdesignicons-webfont-Dp5v-WZN.woff2",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2"
+  },
+  "resources/assets/Logo.png": {
+    "file": "assets/Logo-Dw5G5Sc4.png",
+    "src": "resources/assets/Logo.png"
+  },
+  "resources/assets/MapPilar.png": {
+    "file": "assets/MapPilar-CIi_gdOp.png",
+    "src": "resources/assets/MapPilar.png"
+  },
+  "resources/assets/Mayor_Homepage.png": {
+    "file": "assets/Mayor_Homepage-BIt2uX7d.png",
+    "src": "resources/assets/Mayor_Homepage.png"
+  },
+  "resources/assets/NewLogo.png": {
+    "file": "assets/NewLogo-DkbPwCWp.png",
+    "src": "resources/assets/NewLogo.png"
+  },
+  "resources/assets/banners/banner1.jpg": {
+    "file": "assets/banner1-aXaiBmgu.jpg",
+    "src": "resources/assets/banners/banner1.jpg"
+  },
+  "resources/assets/banners/mayor3.jpg": {
+    "file": "assets/mayor3-B7JWR2xy.jpg",
+    "src": "resources/assets/banners/mayor3.jpg"
+  },
+  "resources/assets/bgMain.png": {
+    "file": "assets/bgMain-Cv1jFBpL.png",
+    "src": "resources/assets/bgMain.png"
+  },
+  "resources/assets/bgget.png": {
+    "file": "assets/bgget-D7TRwp0Z.png",
+    "src": "resources/assets/bgget.png"
+  },
+  "resources/assets/map.jpg": {
+    "file": "assets/map-Cwypx8-M.jpg",
+    "src": "resources/assets/map.jpg"
+  },
+  "resources/assets/maxresdefault.jpg": {
+    "file": "assets/maxresdefault-Gln1dEBv.jpg",
+    "src": "resources/assets/maxresdefault.jpg"
+  },
+  "resources/assets/mayors-corner-bg-50.jpg": {
+    "file": "assets/mayors-corner-bg-50-BRrmNnTu.jpg",
+    "src": "resources/assets/mayors-corner-bg-50.jpg"
+  },
+  "resources/assets/pichome.png": {
+    "file": "assets/pichome-CrRGwIfb.png",
+    "src": "resources/assets/pichome.png"
+  },
+  "resources/assets/pilar.png": {
+    "file": "assets/pilar-BGLF8v3h.png",
+    "src": "resources/assets/pilar.png"
+  },
+  "resources/assets/share/facebook.png": {
+    "file": "assets/facebook-CnX1q9D4.png",
+    "src": "resources/assets/share/facebook.png"
+  },
+  "resources/assets/share/link.png": {
+    "file": "assets/link-BLILP2Vx.png",
+    "src": "resources/assets/share/link.png"
+  },
+  "resources/assets/share/linkedIn.png": {
+    "file": "assets/linkedIn-CD9Ukpkl.png",
+    "src": "resources/assets/share/linkedIn.png"
+  },
+  "resources/assets/share/twitter.png": {
+    "file": "assets/twitter-D8KZate6.png",
+    "src": "resources/assets/share/twitter.png"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-CVsLpQ4J.js",
+    "file": "assets/app-DdLVU-A_.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
-      "resources/js/pages/Home.vue"
+      "resources/js/pages/Login.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/DataView.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/ViewComplaintArchive.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/DataHomeBannerView.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/ViewArchiveBanner.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/DataViewAppointment.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/DataViewNews.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/DataViewLineAgencies.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/DataViewMunicipalOfficer.vue",
+      "resources/js/components/LeftNavigation.vue",
+      "resources/js/components/TopNavigation.vue",
+      "resources/js/pages/DataUsersView.vue",
+      "resources/js/pages/Home.vue",
+      "resources/js/pages/AboutUs.vue",
+      "resources/js/pages/MayorsCorner.vue",
+      "resources/js/pages/Appointment.vue",
+      "resources/js/pages/Complaint.vue",
+      "resources/js/pages/NewsDetails.vue",
+      "resources/js/pages/NewsandAnnouncement.vue",
+      "resources/js/pages/Services.vue",
+      "resources/js/pages/ContactUsView.vue",
+      "resources/js/pages/Tourism.vue",
+      "resources/js/pages/OurOfficerView.vue"
     ],
     "css": [
-      "assets/app-CSaG_oEK.css"
+      "assets/app-BGJGGHc8.css"
+    ],
+    "assets": [
+      "assets/Logo-Dw5G5Sc4.png",
+      "assets/materialdesignicons-webfont-CSr8KVlo.eot",
+      "assets/materialdesignicons-webfont-Dp5v-WZN.woff2",
+      "assets/materialdesignicons-webfont-PXm3-2wK.woff",
+      "assets/materialdesignicons-webfont-B7mPwVP_.ttf"
+    ]
+  },
+  "resources/js/components/LeftNavigation.vue": {
+    "file": "assets/LeftNavigation-CCIXyCzz.js",
+    "name": "LeftNavigation",
+    "src": "resources/js/components/LeftNavigation.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/LeftNavigation-B8TN-obf.css"
+    ]
+  },
+  "resources/js/components/TopNavigation.vue": {
+    "file": "assets/TopNavigation-DxbmrhMk.js",
+    "name": "TopNavigation",
+    "src": "resources/js/components/TopNavigation.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/TopNavigation-CFh0WtS0.css"
+    ]
+  },
+  "resources/js/pages/AboutUs.vue": {
+    "file": "assets/AboutUs-Bcq9ad0Q.js",
+    "name": "AboutUs",
+    "src": "resources/js/pages/AboutUs.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_pagination-B1-x9Rbr.js",
+      "_maxresdefault-CDtGSuCc.js",
+      "_MapPilar-Ctfs9RKY.js"
+    ],
+    "css": [
+      "assets/AboutUs-BlOM5Mbk.css"
+    ],
+    "assets": [
+      "assets/pichome-CrRGwIfb.png",
+      "assets/pilar-BGLF8v3h.png"
+    ]
+  },
+  "resources/js/pages/Appointment.vue": {
+    "file": "assets/Appointment-CmJwuNS0.js",
+    "name": "Appointment",
+    "src": "resources/js/pages/Appointment.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_bgget-B-RAAbUv.js",
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Appointment-Ivlx0pWV.css"
+    ]
+  },
+  "resources/js/pages/Complaint.vue": {
+    "file": "assets/Complaint-DCXF52Qe.js",
+    "name": "Complaint",
+    "src": "resources/js/pages/Complaint.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_bgget-B-RAAbUv.js",
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Complaint-Dffrxx94.css"
+    ]
+  },
+  "resources/js/pages/ContactUsView.vue": {
+    "file": "assets/ContactUsView-Diei-x15.js",
+    "name": "ContactUsView",
+    "src": "resources/js/pages/ContactUsView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Banner-6Yt6jchj.js",
+      "resources/js/app.js",
+      "_pagination-B1-x9Rbr.js"
+    ]
+  },
+  "resources/js/pages/DataHomeBannerView.vue": {
+    "file": "assets/DataHomeBannerView-41zdAAWz.js",
+    "name": "DataHomeBannerView",
+    "src": "resources/js/pages/DataHomeBannerView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/DataHomeBannerView-Q0E7AVlU.css"
+    ]
+  },
+  "resources/js/pages/DataUsersView.vue": {
+    "file": "assets/DataUsersView-bKooBI1I.js",
+    "name": "DataUsersView",
+    "src": "resources/js/pages/DataUsersView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/DataUsersView-CqOfVuPp.css"
+    ]
+  },
+  "resources/js/pages/DataView.vue": {
+    "file": "assets/DataView-BIJtKO7h.js",
+    "name": "DataView",
+    "src": "resources/js/pages/DataView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/DataList-DhWxVmTR.css"
+    ]
+  },
+  "resources/js/pages/DataViewAppointment.vue": {
+    "file": "assets/DataViewAppointment-CyghTU14.js",
+    "name": "DataViewAppointment",
+    "src": "resources/js/pages/DataViewAppointment.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/DataViewAppointment-BjAwzbWh.css"
+    ]
+  },
+  "resources/js/pages/DataViewLineAgencies.vue": {
+    "file": "assets/DataViewLineAgencies-BH-TI80e.js",
+    "name": "DataViewLineAgencies",
+    "src": "resources/js/pages/DataViewLineAgencies.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/DataViewLineAgencies-DPc0ryWg.css"
+    ]
+  },
+  "resources/js/pages/DataViewMunicipalOfficer.vue": {
+    "file": "assets/DataViewMunicipalOfficer-D8aV6TKF.js",
+    "name": "DataViewMunicipalOfficer",
+    "src": "resources/js/pages/DataViewMunicipalOfficer.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/DataViewMunicipalOfficer-DrUwqf7n.css"
+    ]
+  },
+  "resources/js/pages/DataViewNews.vue": {
+    "file": "assets/DataViewNews-CZT1AHNK.js",
+    "name": "DataViewNews",
+    "src": "resources/js/pages/DataViewNews.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/DataViewNews-CIq7Wn2y.css"
     ]
   },
   "resources/js/pages/Home.vue": {
-    "file": "assets/Home-D-hD52hh.js",
+    "file": "assets/Home-B4n0KgtM.js",
     "name": "Home",
     "src": "resources/js/pages/Home.vue",
     "isDynamicEntry": true,
     "imports": [
+      "_Banner-C22JNTrB.js",
+      "_MayorsCorner-DZU2bczA.js",
+      "_Vicinity-B0re3UPd.js",
+      "_NewsListHome-TjUagPGS.js",
+      "resources/js/app.js",
+      "_pagination-B1-x9Rbr.js",
+      "_MapPilar-Ctfs9RKY.js",
+      "_axios-CCb-kr4I.js"
+    ]
+  },
+  "resources/js/pages/Login.vue": {
+    "file": "assets/Login-C4UUdxp5.js",
+    "name": "Login",
+    "src": "resources/js/pages/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_NewLogo-D_1dYNnW.js",
+      "_axios-CCb-kr4I.js",
       "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Login-C6lxAhXH.css"
+    ],
+    "assets": [
+      "assets/bgMain-Cv1jFBpL.png"
+    ]
+  },
+  "resources/js/pages/MayorsCorner.vue": {
+    "file": "assets/MayorsCorner-CkuefcK0.js",
+    "name": "MayorsCorner",
+    "src": "resources/js/pages/MayorsCorner.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Banner-C22JNTrB.js",
+      "_MayorsCorner-DZU2bczA.js",
+      "resources/js/app.js",
+      "_pagination-B1-x9Rbr.js"
+    ]
+  },
+  "resources/js/pages/NewsDetails.vue": {
+    "file": "assets/NewsDetails-C2GQrvXp.js",
+    "name": "NewsDetails",
+    "src": "resources/js/pages/NewsDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_axios-CCb-kr4I.js"
+    ],
+    "css": [
+      "assets/NewsDetails-BD72ULuV.css"
+    ],
+    "assets": [
+      "assets/link-BLILP2Vx.png",
+      "assets/linkedIn-CD9Ukpkl.png",
+      "assets/twitter-D8KZate6.png",
+      "assets/facebook-CnX1q9D4.png"
+    ]
+  },
+  "resources/js/pages/NewsandAnnouncement.vue": {
+    "file": "assets/NewsandAnnouncement-Dg0aZ-YK.js",
+    "name": "NewsandAnnouncement",
+    "src": "resources/js/pages/NewsandAnnouncement.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Banner-C22JNTrB.js",
+      "_axios-CCb-kr4I.js",
+      "resources/js/app.js",
+      "_Vicinity-B0re3UPd.js",
+      "_pagination-B1-x9Rbr.js",
+      "_MapPilar-Ctfs9RKY.js"
+    ],
+    "css": [
+      "assets/NewsandAnnouncement-PhQur1Iq.css"
+    ]
+  },
+  "resources/js/pages/OurOfficerView.vue": {
+    "file": "assets/OurOfficerView-D0zBkFh9.js",
+    "name": "OurOfficerView",
+    "src": "resources/js/pages/OurOfficerView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Banner-C22JNTrB.js",
+      "_MayorsCorner-DZU2bczA.js",
+      "resources/js/app.js",
+      "_pagination-B1-x9Rbr.js",
+      "_NewsListHome-TjUagPGS.js",
+      "_axios-CCb-kr4I.js"
+    ],
+    "css": [
+      "assets/OurOfficerView-Cb9o6_Iw.css"
+    ]
+  },
+  "resources/js/pages/Services.vue": {
+    "file": "assets/Services-fdCMPEW9.js",
+    "name": "Services",
+    "src": "resources/js/pages/Services.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Banner-6Yt6jchj.js",
+      "_NewLogo-D_1dYNnW.js",
+      "_pagination-B1-x9Rbr.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Services-L3hILvWw.css"
+    ]
+  },
+  "resources/js/pages/Tourism.vue": {
+    "file": "assets/Tourism-BcQgnUyD.js",
+    "name": "Tourism",
+    "src": "resources/js/pages/Tourism.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Banner-6Yt6jchj.js",
+      "resources/js/app.js",
+      "_maxresdefault-CDtGSuCc.js",
+      "_pagination-B1-x9Rbr.js"
+    ],
+    "css": [
+      "assets/Tourism-BZByoA8F.css"
+    ],
+    "assets": [
+      "assets/bgget-D7TRwp0Z.png"
+    ]
+  },
+  "resources/js/pages/ViewArchiveBanner.vue": {
+    "file": "assets/ViewArchiveBanner-Babsp2mZ.js",
+    "name": "ViewArchiveBanner",
+    "src": "resources/js/pages/ViewArchiveBanner.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/ViewArchiveBanner-DPYyRNi9.css"
+    ]
+  },
+  "resources/js/pages/ViewComplaintArchive.vue": {
+    "file": "assets/ViewComplaintArchive-ByNiQRIZ.js",
+    "name": "ViewComplaintArchive",
+    "src": "resources/js/pages/ViewComplaintArchive.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/ViewComplaintArchive-DLzoRcOc.css",
+      "assets/DataList-DhWxVmTR.css"
     ]
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-D-sv12UV.css",
+    "file": "assets/app-Bb8CdHux.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   }
