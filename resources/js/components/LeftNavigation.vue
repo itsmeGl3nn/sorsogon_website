@@ -142,11 +142,16 @@ export default {
                 type: "text",
                 path: "/data-news",
             },
-            { title: "CMS - About Us", type: "text", path: "/data-about" },
+            // { title: "CMS - About Us", type: "text", path: "/data-about" },
+            // {
+            //     title: "CMS - Line Agencies",
+            //     type: "text",
+            //     path: "/data-agencies",
+            // },
             {
-                title: "CMS - Line Agencies",
+                title: "CMS - Tourism",
                 type: "text",
-                path: "/data-agencies",
+                path: "/cms-tourism",
             },
         ]);
 

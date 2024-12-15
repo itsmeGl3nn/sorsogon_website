@@ -20,6 +20,7 @@ class Appointment extends Model
             'email',
             'reasons',
             'date',
+            'department_office',
             'time',
         ];
 

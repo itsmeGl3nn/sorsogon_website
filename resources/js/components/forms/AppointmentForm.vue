@@ -2,7 +2,6 @@
     <div class="bg-class h-120 w-120" :style="backgroundStyle">
         <v-container class="py-md-8 py-4 h-100">
             <v-row>
-
                 <v-col col="12" md="6">
                     <v-card
                         min-height="600px"
@@ -123,8 +122,24 @@
                                         shaped
                                     ></v-textarea>
                                     <v-select
+                                        v-model="department_office"
+                                        :items="officeOptions"
+                                        class="text-white"
+                                        placeholder="Office Department"
+                                        :rules="[
+                                            (v) =>
+                                                !!v ||
+                                                'This field cannot be empty.',
+                                        ]"
+                                        variant="outlined"
+                                        hide-details="auto"
+                                    >
+                                    </v-select>
+
+                                    <v-select
                                         v-model="time"
                                         :items="timeOptions"
+                                        placeholder="Time of Appointment"
                                         class="mt-5 text-white"
                                         :rules="[
                                             (v) =>
@@ -135,6 +150,7 @@
                                         hide-details="auto"
                                     >
                                     </v-select>
+
                                     <v-menu
                                         v-model="updatedMenu"
                                         :close-on-content-click="false"
@@ -199,12 +215,28 @@
             </v-row>
         </v-container>
 
-        <v-dialog v-model="successDialog" persistent max-width="400">
+        <v-dialog
+            v-model="successDialog"
+            persistent
+            max-width="600"
+            height="550px"
+        >
             <v-card>
-                <v-card-title class="headline">Success</v-card-title>
-                <v-card-text
-                    >Your appointment has been successfully booked.</v-card-text
-                >
+                <v-card-text class="text-h5 text-green">
+                    Your appointment has been successfully booked with the
+                    following details:
+                </v-card-text>
+                <v-card-text>
+                    <div><strong>First Name:</strong> {{ first_name }}</div>
+                    <div><strong>Last Name:</strong> {{ last_name }}</div>
+                    <div><strong>Address:</strong> {{ address }}</div>
+                    <div><strong>Mobile Number:</strong> {{ mobile_num }}</div>
+                    <div><strong>Email:</strong> {{ email }}</div>
+                    <div><strong>Department Office:</strong> {{ department_office }}</div>
+                    <div><strong>Time:</strong> {{ time }}</div>
+                    <div><strong>Date:</strong> {{ formattedDate }}</div>
+                    <div><strong>Reason:</strong> {{ reasons }}</div>
+                </v-card-text>
                 <v-card-actions>
                     <v-btn color="primary" @click="closeDialog">OK</v-btn>
                 </v-card-actions>
@@ -226,9 +258,10 @@ export default {
             address: "",
             email: "",
             reasons: "",
+            department_office: null,
             loading: false,
             mobile_num: "",
-            time: "",
+            time: null,
             updatedMenu: false,
             date: null,
             formattedDate: "",
@@ -245,6 +278,27 @@ export default {
                 "3:00PM-4:00PM",
                 "4:00PM-5:00PM",
             ],
+            officeOptions: [
+                "Office of the Mayor",
+                "Office of the Vice-Mayor and Sangguniang Bayan",
+                "Office of the Municipal Human Resource & Management",
+                "Office of the Municipal Treasurer",
+                "Office of the Municipal Assessor",
+                "Office of the Municipal Accountant",
+                "Office of the Municipal Budget Officer",
+                "Office of the Municipal Planning and Dev't Coordinator",
+                "Office of the Municipal Engineer",
+                "Office of the Municipal Health Officer",
+                "Office of the Municipal Civil Registrar",
+                "Office of the Municipal Administrator",
+                "Office of the Municipal Agriculturist",
+                "Office of the Municipal Social Welfare and Dev't Officer",
+                "Office of the Municipal Disaster Risk Reduction and Mgt. Officer",
+                "Office of the Public Employment Services Office Manager",
+                "Office of the Gender and Development",
+                "Office of the Bids and Awards Committee",
+            ],
+
             successDialog: false,
         };
     },
@@ -294,17 +348,19 @@ export default {
             this.tableData = res.data.data; // Assuming `tableData` contains existing appointments
         },
 
-        async checkAvailability(date, time) {
+        async checkAvailability(date, time, departmentOffice) {
             // Fetch the latest booked appointments data
             await this.getDate();
 
-            // Check if the selected date and time combination is already booked
+            // Check if the selected date, time, and departmentOffice combination is already booked
             const isBooked = this.tableData.some(
                 (appointment) =>
-                    appointment.date === date && appointment.time === time
+                    appointment.date === date &&
+                    appointment.time === time &&
+                    appointment.department_office === departmentOffice
             );
 
-            return !isBooked; // Return true if the time slot is available, false if it’s taken
+            return !isBooked; // Return true if the time slot is available for the department, false if it’s taken
         },
 
         async submit() {
@@ -331,6 +387,7 @@ export default {
                     address: this.address,
                     mobile_num: this.mobile_num,
                     email: this.email,
+                    department_office: this.department_office,
                     time: this.time,
                     date: this.formattedDate,
                     reasons: this.reasons,

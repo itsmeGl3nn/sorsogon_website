@@ -135,7 +135,8 @@
   </template>
 
   <script>
-  import logo from "../../../assets/NewLogo.png";
+  import book from "../../../assets/appoint.jpg";
+  import com from "../../../assets/complain.jpg";
   import { Navigation, Pagination, Autoplay } from "swiper/modules";
   import { Swiper, SwiperSlide } from "swiper/vue";
   import "swiper/css";
@@ -158,7 +159,7 @@
       "id": 1,
       "title": "Report an Issue or Concern",
       "description": "Have a problem or suggestion? Let us know.",
-      "backgroundImage": logo,
+      "backgroundImage": com,
       "featuredProduct": true,
       "button":  "Report Now",
       "link": "/file-complaint"
@@ -167,7 +168,7 @@
       "id": 2,
       "title": "Schedule a Meeting",
       "description": "Need to meet with us? Book an appointment now.",
-     "backgroundImage": logo,
+     "backgroundImage": book,
       "featuredProduct": true,
       "button":  "Book Now",
        "link": "/appointment"

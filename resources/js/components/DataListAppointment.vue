@@ -23,6 +23,7 @@
             <th>Address</th>
             <th>Date</th>
             <th>Time</th>
+            <th>Department Office</th>
             <th>Reasons</th>
             <th>Mobile Number</th>
             <th>Email</th>
@@ -39,6 +40,7 @@
             <td>{{ item.address }}</td>
             <td>{{ item.date }}</td>
             <td>{{ item.time }}</td>
+            <td>{{ item.department_office }}</td>
             <td>{{ item.reasons }}</td>
             <td>{{ item.mobile_num }}</td>
             <td>{{ item.email }}</td>

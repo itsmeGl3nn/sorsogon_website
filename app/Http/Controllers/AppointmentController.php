@@ -20,6 +20,7 @@ class AppointmentController extends Controller
             'email'      => 'required|string|email|max:255|unique:appointments,email',
             'reasons'    => 'nullable|string',
             'date'       => 'nullable|date',
+            'department_office' => 'nullable|string',
             'time'       => 'nullable|string',
         ]);
 
@@ -31,6 +32,7 @@ class AppointmentController extends Controller
         'address'    => $request->address,
         'mobile_num' => $request->mobile_num,
         'email'      => $request->email,
+        'department_office' => $request->department_office,
         'reasons'    => $request->reasons,
         'date'       => $date,
         'time'       => $request->time,

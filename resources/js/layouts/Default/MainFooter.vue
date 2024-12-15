@@ -137,24 +137,23 @@
                     </p>
                   </v-list-item-title>
                 </v-list-item>
-
                 <v-list-item
                   class="montserrat-font"
                   :min-height="smAndUp ? 20 : 0"
                 >
                   <a
-                    href="mailto:info@countryfunders.com"
+                    href="mailto:pilarsor.pio@gmail.com"
                     target="_blank"
                     aria-label="Email country funders"
                     class="text-white text-decoration-none"
-                    ></a
+                    >pilarsor.pio@gmail.com</a
                   >
                 </v-list-item>
                 <v-list-item
                   class="montserrat-font"
                   :min-height="smAndUp ? 40 : 0"
                 >
-                  (+0) 123 456 789
+                   + (056) 211-3828
                 </v-list-item>
               </v-list>
             </div>
@@ -202,11 +201,11 @@ import logo from "/resources/assets/Logo.png"
         details: [
           {
             label:
-              "Lorem ipsum dolor sit amet, consect",
+              "",
           },
           {
             label:
-              "Lorem ipsum dolor sit amet, consectetur adip occ occurence",
+              "",
           },
         ],
         navItems: [

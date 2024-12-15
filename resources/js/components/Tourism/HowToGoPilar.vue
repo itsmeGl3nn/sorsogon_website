@@ -11,7 +11,7 @@
             'flex-sm-row-reverse': (i + 1) % 2
           }" class="py-2">
             <v-col cols="12" md="7" :data-aos="(i + 1) % 2 ? 'fade-left' : 'fade-right'" data-aos-duration="1200" :data-aos-delay="200 * (i + 1)">
-              <div class="text-primary text-h5">{{ item.content }}</div>
+              <div class="text-primary text-h5">{{ item.desc }}</div>
             </v-col>
             <v-col cols="12" md="5" :data-aos="(i + 1) % 2 ? 'fade-right' : 'fade-left'" data-aos-duration="1200" :data-aos-delay="200 * (i + 1)">
               <v-img class="rounded-lg" :src="item.image"></v-img>
@@ -24,34 +24,30 @@
 
   <script>
   import TitleCombo from '@/components/staples/TitleCombo.vue';
-  import thumbnail from "/resources/assets/maxresdefault.jpg";
+  import axios from 'axios'; // Ensure axios is imported
+
   export default {
     components: { TitleCombo },
     data() {
       return {
-        dataList: [
-          {
-            content: "From Manila by Air: Take Philippine Airlines or Cebu Pacific to Legazpi City, then an air-conditioned van to Pilar (50 minutes). Alternatively, take Asean Spirit or Cebu Pacific to Masbate City, followed by the 9:30 AM Montenegro Fast Craft trip to Pilar.",
-            image: thumbnail,
-          },
-          {
-            content: "From Manila by Land: From Araneta Center Bus Terminal in Cubao, Quezon City, take buses that directly travel to Pilar. Similar options are available from Pasay City Bus Terminal.",
-            image: thumbnail,
-          },
-          {
-            content: "From Cebu City by Air: Fly Cebu Pacific from Mactan International Airport to Legazpi City, then take a van ride to Pilar.",
-            image: thumbnail,
-          },
-          {
-            content: "From Cebu City by Sea: Take Roro from Bogo, Cebu to Cataingan or Cawayan in Masbate. From there, take Roro or Fastcraft to Pilar.",
-            image: thumbnail,
-          },
-          {
-            content: "From Roxas City by Sea: Take a passenger outrigger from Roxas City Port to Milagros, Balod, or Mandaon in Masbate. Then transfer to a van for a one-hour trip to Pilar.",
-            image: thumbnail,
-          },
-        ],
+        dataList: [], // The data to display
       };
+    },
+    mounted() {
+      // Fetch the tourism data when the component is mounted
+      this.getTourism();
+    },
+    methods: {
+      async getTourism() {
+        try {
+          const res = await axios.get("/api/tourism"); // API request to fetch tourism data
+          if (res.data && res.data.data) {
+            this.dataList = res.data.data; // Set the dataList with the fetched data
+          }
+        } catch (error) {
+          console.error("Error fetching tourism data:", error);
+        }
+      },
     },
   };
   </script>

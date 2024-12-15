@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('mobile_num');
             $table->string('email');
             $table->string('reasons')->nullable();
-            //$table->string('status');
+            $table->string('department_office');
             $table->date('date')->nullable();
             $table->string('time')->nullable();
             $table->softDeletes();

@@ -167,10 +167,10 @@
                 </v-col>
             </v-row>
         </v-container>
-        <v-dialog v-model="successDialog" persistent max-width="400">
+        <v-dialog v-model="successDialog" persistent max-width="600" height="300px">
             <v-card>
-                <v-card-title class="headline">Success</v-card-title>
-                <v-card-text
+                <v-card-title class="headline text-h3 text-green">Success</v-card-title>
+                <v-card-text class="text-h5"
                     >Your Complaint has been successfully added.</v-card-text
                 >
                 <v-card-actions>
