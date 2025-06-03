@@ -10,7 +10,7 @@
 
 ## 📘 About the Project
 
-This is a **Headless CMS** built using a **Laravel RESTful API** as the backend and a **Vue.js** frontend powered by **Vuetify**. It’s designed for flexibility, performance, and scalability—making it ideal for content-driven applications that require a decoupled architecture.
+This is a **Headless CMS** built using a **Laravel RESTful API** for the backend and a **Vue.js** frontend powered by **Vuetify**. It's designed to be fast, scalable, and flexible — ideal for content-driven applications that benefit from a decoupled architecture.
 
 ---
 
@@ -18,7 +18,7 @@ This is a **Headless CMS** built using a **Laravel RESTful API** as the backend 
 
 ### Backend
 - Laravel 10+
-- Sanctum (API Authentication)
+- JWT Authentication (`tymon/jwt-auth`)
 - Eloquent ORM
 - Laravel Resources & Policies
 
@@ -44,8 +44,7 @@ api.php -> API Route Definitions
 /app/Http/Resources -> Format API Responses
 
 shell
-Copy
-Edit
+
 
 ### Frontend (`/frontend`)
 /src
@@ -56,8 +55,7 @@ Edit
 /services/api.js -> Axios API Integration
 
 yaml
-Copy
-Edit
+
 
 ---
 
@@ -71,71 +69,72 @@ Edit
 Set up environment
 
 bash
-Copy
-Edit
+
 cp .env.example .env
 php artisan key:generate
 Run database migrations
 
 bash
-Copy
-Edit
+
 php artisan migrate
+Generate JWT secret
+
+bash
+
+php artisan jwt:secret
 Serve the backend
 
 bash
-Copy
-Edit
+
 php artisan serve
 Frontend (Vue + Vuetify)
 Install dependencies
 
 bash
-Copy
-Edit
+
 npm install
 Run the frontend app
 
 bash
-Copy
-Edit
+
 npm run dev
 Configure Axios base URL
 Edit src/services/api.js:
 
 js
-Copy
-Edit
+
 import axios from 'axios';
 
 const API = axios.create({
   baseURL: 'http://localhost:8000/api',
-  withCredentials: true, // required for Sanctum
 });
 
 export default API;
-🔐 Authentication (Laravel Sanctum)
-Sanctum provides token-based API authentication.
+🔐 Authentication (JWT)
+This project uses JWT (JSON Web Token) for API authentication.
 
-Login endpoint returns a token stored in the frontend (usually localStorage or cookie).
+After logging in, a token is returned and stored (e.g. in localStorage)
 
-Protect routes using auth:sanctum middleware.
+Token is included in the Authorization header of protected requests
 
-Example Login API Call (frontend):
+Example Login API Call js
 
-js
-Copy
-Edit
+
 API.post('/login', {
   email: 'admin@example.com',
   password: 'password'
+}).then(response => {
+  const token = response.data.token;
+  localStorage.setItem('token', token);
+  API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 });
+
 📦 Features
-🔑 Secure authentication with Laravel Sanctum
+🔐 Secure authentication with JWT
 
 📝 Full CRUD for content types (posts, pages, etc.)
 
-🔧 Headless architecture — decoupled frontend and backend
+🧩 Headless architecture — decoupled frontend and backend
 
 🎨 Responsive design with Vuetify
 
@@ -151,72 +150,30 @@ All endpoints are prefixed with /api
 Auth Routes
 Method	Endpoint	Description
 POST	/login	Authenticate user
-POST	/logout	Revoke session/token
-GET	/user	Get current user data
+POST	/logout	Revoke token
+GET	/me	Get current user
 
 Posts
 Method	Endpoint	Description
 GET	/posts	List all posts
 GET	/posts/{id}	Get single post
-POST	/posts	Create a new post
-PUT	/posts/{id}	Update a post
-DELETE	/posts/{id}	Delete a post
+POST	/posts	Create new post
+PUT	/posts/{id}	Update post
+DELETE	/posts/{id}	Delete post
 
-You can extend similar routes for other content types (e.g., Pages, Media, Categories, etc.)
+You can create similar endpoints for other content types like Pages, Categories, and Media.
 
-☁️ Deployment
-Backend
-Can be deployed on:
-
-Hostinger VPS
-
-AWS EC2 / GCP Compute Engine
-
-Laravel Forge or Shared Hosting
-
-Ensure .env is configured for production
-
-Use php artisan config:cache for optimization
-
-Frontend
-Deploy to:
-
-Vercel
-
-Netlify
-
-Static build via:
-
-bash
-Copy
-Edit
-npm run build
-Or serve directly from Laravel (public folder)
-
-CORS Configuration
-Ensure cors.php allows frontend domain:
+🔄 CORS Configuration
+Ensure your backend’s config/cors.php contains:
 
 php
-Copy
-Edit
-'paths' => ['api/*', 'sanctum/csrf-cookie'],
-'allowed_origins' => ['http://localhost:5173'], // adjust for prod
+
+'paths' => ['api/*', 'login', 'logout', 'me'],
+'allowed_origins' => ['http://localhost:5173'], // Adjust for production
+'allowed_headers' => ['*'],
+'allowed_methods' => ['*'],
+
 📸 Screenshots
-(Optional section – Add screenshots of your CMS dashboard, editor, or frontend preview)
-Example:
+(Optional – Add real screenshots of your CMS dashboard)
 
 <p align="center"> <img src="screenshots/dashboard.png" width="80%" alt="CMS Dashboard Screenshot"> </p>
-🧪 Testing
-Coming soon – Add your unit or API test instructions here:
-
-bash
-Copy
-Edit
-php artisan test
-
-🤝 Contributing
-Contributions are welcome! Please fork this repo and submit a pull request.
-Follow PSR standards and Vue best practices when contributing.
-
-🛡 License
-This project is open-sourced software licensed under the MIT License.
