@@ -213,15 +213,10 @@ bash
 Copy
 Edit
 php artisan test
+
 🤝 Contributing
 Contributions are welcome! Please fork this repo and submit a pull request.
 Follow PSR standards and Vue best practices when contributing.
 
 🛡 License
 This project is open-sourced software licensed under the MIT License.
-
-vbnet
-Copy
-Edit
-
-Let me know if you'd like to add database ER diagrams, Swagger/OpenAPI docs, or Docker setup instructio
